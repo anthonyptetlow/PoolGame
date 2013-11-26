@@ -1,4 +1,4 @@
-package mock.view;
+package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,17 +9,20 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import mock.model.MockTable;
+import model.Ball;
+import model.PoolTable;
 
-public class TableView extends JPanel implements Observer {
+
+
+public class PoolTableView extends JPanel implements Observer {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -949315898738707714L;
-	private MockTable model;
+	private PoolTable model;
 
-	public TableView(MockTable model) {
+	public PoolTableView(PoolTable model) {
 		this.model = model;
 		this.model.addObserver(this);
 	}
@@ -34,8 +37,13 @@ public class TableView extends JPanel implements Observer {
 		g2d.setColor(Color.BLACK);
 		// Draw Pool Table
 
-		g2d.drawRect((int) (model.dbBody.getPosition().x * 100),
-				(int) (model.dbBody.getPosition().y * 100), 50, 50);
+		// Draw Balls
+
+		for (Ball ball : model.getBalls()) {
+
+			g2d.fillOval((int) ball.getPosX(), (int) ball.getPosY(),
+					ball.getRadius() * 2, ball.getRadius() * 2);
+		}
 
 		g.drawImage(bufferImage, 0, 0, null);
 	}

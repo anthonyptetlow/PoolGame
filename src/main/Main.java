@@ -1,7 +1,7 @@
-package pool.main;
+package main;
 
-import pool.model.PoolTable;
-import pool.view.AppWindow;
+import model.PoolTable;
+import view.AppWindow;
 
 public class Main {
 

@@ -1,8 +1,9 @@
-package pool.view;
+package view;
 
 import javax.swing.JFrame;
 
-import pool.model.PoolTable;
+import model.PoolTable;
+
 
 
 public class AppWindow extends JFrame {

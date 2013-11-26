@@ -1,4 +1,4 @@
-package pool.model;
+package model;
 
 public class Cushion {
 
