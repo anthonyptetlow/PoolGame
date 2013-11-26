@@ -1,10 +1,10 @@
-package main;
+package mock.main;
 
-import model.PoolModel;
+import mock.model.MockTable;
+import mock.view.AppWindow;
 
 import org.jbox2d.common.Vec2;
 
-import view.AppWindow;
 
 public class Main {
 
@@ -14,7 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws InterruptedException {
 
-		PoolModel model = new PoolModel();
+		MockTable model = new MockTable();
 
 		Vec2 position = model.dbBody.getPosition();
 

@@ -1,8 +1,9 @@
-package view;
+package pool.view;
 
 import javax.swing.JFrame;
 
-import model.PoolModel;
+import pool.model.PoolTable;
+
 
 public class AppWindow extends JFrame {
 
@@ -12,7 +13,7 @@ public class AppWindow extends JFrame {
 	private static final long serialVersionUID = -9222311713904614969L;
 	private PoolTableView table;
 
-	public AppWindow(PoolModel model) {
+	public AppWindow(PoolTable model) {
 
 		super();
 		table = new PoolTableView(model);

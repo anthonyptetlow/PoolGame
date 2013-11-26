@@ -1,5 +1,7 @@
-package model;
+package mock.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 import org.jbox2d.collision.shapes.PolygonShape;
@@ -10,9 +12,11 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 
-public class PoolModel extends Observable {
+import pool.model.Ball;
 
-	public final World world = new World(new Vec2(0, 0.0f));
+public class MockTable extends Observable {
+
+	public static final World world = new World(new Vec2(0, 0.0f));
 
 	public Body dbBody;
 
@@ -22,10 +26,12 @@ public class PoolModel extends Observable {
 
 	private final int positionIterations = 2;
 
-	public PoolModel() {
+	private List<Ball> balls;
 
+	public MockTable() {
+		balls = new ArrayList<Ball>();
 		createGroundBox();
-		createdynamicBox();
+		createDynamicBox();
 	}
 
 	public void createGroundBox() {
@@ -41,28 +47,21 @@ public class PoolModel extends Observable {
 		groundBody.createFixture(groundBox, 0.0f);
 	}
 
-	public void createdynamicBox() {
+	public void createDynamicBox() {
 
 		BodyDef bodyDef = new BodyDef();
-
 		bodyDef.type = BodyType.DYNAMIC;
-
 		bodyDef.position.set(0.0f, 4.0f);
 
-		dbBody = world.createBody(bodyDef);
-
 		PolygonShape dynamicBox = new PolygonShape();
-
 		dynamicBox.setAsBox(1.0f, 1.0f);
 
 		FixtureDef fixtureDef = new FixtureDef();
-
 		fixtureDef.shape = dynamicBox;
-
 		fixtureDef.density = 1.0f;
-
 		fixtureDef.friction = 0.3f;
 
+		dbBody = world.createBody(bodyDef);
 		dbBody.createFixture(fixtureDef);
 		dbBody.setLinearVelocity(new Vec2(0.0f, -4.0f));
 	}

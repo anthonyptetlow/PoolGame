@@ -1,4 +1,4 @@
-package view;
+package mock.view;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,17 +9,17 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import model.PoolModel;
+import mock.model.MockTable;
 
-public class PoolTableView extends JPanel implements Observer {
+public class TableView extends JPanel implements Observer {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -949315898738707714L;
-	private PoolModel model;
+	private MockTable model;
 
-	public PoolTableView(PoolModel model) {
+	public TableView(MockTable model) {
 		this.model = model;
 		this.model.addObserver(this);
 	}
