@@ -3,8 +3,7 @@ package view;
 import javax.swing.JFrame;
 
 import model.PoolTable;
-
-
+import controller.BallCreationListener;
 
 public class AppWindow extends JFrame {
 
@@ -22,6 +21,7 @@ public class AppWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(600, 600);
 		setVisible(true);
+		table.addMouseListener(new BallCreationListener(model));
 
 	}
 }

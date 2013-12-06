@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Color;
-
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
@@ -9,18 +7,16 @@ import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 
-public class Ball {
+public class PoolBall {
 	// JavaFX UI for ball
 	public Body node;
 
 	// Ball radius in pixels
-	private int radius;
+	private float radius;
 
-	private Color color;
-
-	public Ball(float posX, float posY, int radius, Color color, Environment e) {
-		this.radius = radius;
-		this.color = color;
+	public PoolBall(float posX, float posY, Environment e) {
+		// TODO Fix Dimentions
+		this.radius = 5.0f;
 		node = create(posX, posY, e);
 	}
 
@@ -32,7 +28,7 @@ public class Ball {
 		return node.getPosition().y;
 	}
 
-	public int getRadius() {
+	public float getRadius() {
 		return radius;
 	}
 
@@ -50,14 +46,14 @@ public class Ball {
 		bd.position.set(posX, posY);
 
 		CircleShape cs = new CircleShape();
-		cs.m_radius = radius * 0.1f; // We need to convert radius to JBox2D
+		cs.m_radius = radius * 1.0f; // We need to convert radius to JBox2D
 										// equivalent
 		// Create a fixture for ball
 		FixtureDef fd = new FixtureDef();
 		fd.shape = cs;
-		fd.density = 0.6f;
-		fd.friction = 0.0f;
-		// fd.restitution = 0.8f;
+		fd.density = 1.0f;
+		fd.friction = 0.1f;
+		fd.restitution = 1.0f;
 
 		/**
 		 * position. Forces, torques, and impulses can be applied to these
@@ -67,7 +63,8 @@ public class Ball {
 		Body body = e.world.createBody(bd);
 		body.createFixture(fd);
 		// TODO Remove this velocity
-		body.setLinearVelocity(new Vec2(0.0f, -4.0f));
+		body.setLinearVelocity(new Vec2(50.0f, 50.0f));
+		body.setLinearDamping(0.05f);
 		return body;
 	}
 
