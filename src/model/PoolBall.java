@@ -1,5 +1,7 @@
 package model;
 
+import model.api.IPoolBall;
+
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
@@ -7,7 +9,7 @@ import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 
-public class PoolBall {
+public class PoolBall implements IPoolBall {
 	// JavaFX UI for ball
 	public Body node;
 
@@ -20,14 +22,26 @@ public class PoolBall {
 		node = create(posX, posY, e);
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IPoolBall#getPosX()
+	 */
+	@Override
 	public float getPosX() {
 		return node.getPosition().x;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IPoolBall#getPosY()
+	 */
+	@Override
 	public float getPosY() {
 		return node.getPosition().y;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IPoolBall#getRadius()
+	 */
+	@Override
 	public float getRadius() {
 		return radius;
 	}

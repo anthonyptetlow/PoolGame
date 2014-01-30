@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-public class PoolTable extends Observable {
+import model.api.IPoolTable;
+
+public class PoolTable extends Observable implements IPoolTable {
 
 	private Environment environment;
 	private List<Pocket> pockets;
@@ -52,12 +54,28 @@ public class PoolTable extends Observable {
 		notifyObservers();
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IPoolTable#getBalls()
+	 */
+	@Override
 	public List<PoolBall> getBalls() {
 		return balls;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IPoolTable#getCushions()
+	 */
+	@Override
 	public List<RectCushion> getCushions() {
 		return cushions;
+	}
+
+	/* (non-Javadoc)
+	 * @see model.IPoolTable#getPockets()
+	 */
+	@Override
+	public List<Pocket> getPockets() {
+		return pockets;
 	}
 
 }

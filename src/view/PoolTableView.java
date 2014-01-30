@@ -9,9 +9,9 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import model.PoolBall;
 import model.PoolTable;
 import model.RectCushion;
+import model.api.IPoolBall;
 
 public class PoolTableView extends JPanel implements Observer {
 
@@ -38,7 +38,7 @@ public class PoolTableView extends JPanel implements Observer {
 
 		// Draw Balls
 
-		for (PoolBall ball : model.getBalls()) {
+		for (IPoolBall ball : model.getBalls()) {
 
 			g2d.fillOval((int) (ball.getPosX() - ball.getRadius()),
 					(int) (ball.getPosY() + ball.getRadius()),
