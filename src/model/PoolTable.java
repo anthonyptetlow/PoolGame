@@ -4,26 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import model.api.IPocket;
+import model.api.IPoolBall;
 import model.api.IPoolTable;
 
 public class PoolTable extends Observable implements IPoolTable {
 
 	private Environment environment;
-	private List<Pocket> pockets;
+	private List<IPocket> pockets;
 	private List<RectCushion> cushions;
 	private Cue cue;
-	private List<PoolBall> balls;
+	private List<IPoolBall> balls;
 
 	public PoolTable() {
-		balls = new ArrayList<PoolBall>();
+		balls = new ArrayList<IPoolBall>();
 		cushions = new ArrayList<RectCushion>();
-		pockets = new ArrayList<Pocket>();
+		pockets = new ArrayList<IPocket>();
 		cue = null;
-		environment = new Environment();
+		environment = new Environment(this);
 	}
 
 	public void createBall(float x, float y) {
 		balls.add(new PoolBall(x, y, environment));
+	}
+
+	public void createPocket(float x, float y) {
+		pockets.add(new Pocket(x, y, environment));
 	}
 
 	public void createBoarder() {
@@ -54,15 +60,19 @@ public class PoolTable extends Observable implements IPoolTable {
 		notifyObservers();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IPoolTable#getBalls()
 	 */
 	@Override
-	public List<PoolBall> getBalls() {
+	public List<IPoolBall> getBalls() {
 		return balls;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IPoolTable#getCushions()
 	 */
 	@Override
@@ -70,11 +80,13 @@ public class PoolTable extends Observable implements IPoolTable {
 		return cushions;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see model.IPoolTable#getPockets()
 	 */
 	@Override
-	public List<Pocket> getPockets() {
+	public List<IPocket> getPockets() {
 		return pockets;
 	}
 

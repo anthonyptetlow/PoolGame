@@ -56,7 +56,6 @@ public class RectCushion {
 		fd.restitution = 1f;
 
 		Body body = e.world.createBody(bd);
-
 		body.createFixture(fd);
 		return body;
 	}

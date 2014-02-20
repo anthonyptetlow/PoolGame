@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Color;
+
 import model.api.IPoolBall;
 
 import org.jbox2d.collision.shapes.CircleShape;
@@ -11,44 +13,18 @@ import org.jbox2d.dynamics.FixtureDef;
 
 public class PoolBall implements IPoolBall {
 	// JavaFX UI for ball
-	public Body node;
+	private Body node;
 
 	// Ball radius in pixels
-	private float radius;
+	private float radius = 5.0f;
 
 	public PoolBall(float posX, float posY, Environment e) {
 		// TODO Fix Dimentions
-		this.radius = 5.0f;
 		node = create(posX, posY, e);
 	}
 
-	/* (non-Javadoc)
-	 * @see model.IPoolBall#getPosX()
-	 */
-	@Override
-	public float getPosX() {
-		return node.getPosition().x;
-	}
-
-	/* (non-Javadoc)
-	 * @see model.IPoolBall#getPosY()
-	 */
-	@Override
-	public float getPosY() {
-		return node.getPosition().y;
-	}
-
-	/* (non-Javadoc)
-	 * @see model.IPoolBall#getRadius()
-	 */
-	@Override
-	public float getRadius() {
-		return radius;
-	}
-
 	/**
-	 * This method creates a ball by using Circle object from JavaFX and
-	 * CircleShape from JBox2D
+	 * This method creates a ball by using and CircleShape from JBox2D
 	 * 
 	 * @param e
 	 */
@@ -69,17 +45,49 @@ public class PoolBall implements IPoolBall {
 		fd.friction = 0.1f;
 		fd.restitution = 1.0f;
 
-		/**
-		 * position. Forces, torques, and impulses can be applied to these
-		 * Virtual invisible JBox2D body of ball. Bodies have velocity and
-		 * bodies.
-		 */
-		Body body = e.world.createBody(bd);
+		Body body = Environment.world.createBody(bd);
 		body.createFixture(fd);
 		// TODO Remove this velocity
 		body.setLinearVelocity(new Vec2(50.0f, 50.0f));
 		body.setLinearDamping(0.05f);
+		body.setUserData(this);
 		return body;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IPoolBall#getPosX()
+	 */
+	@Override
+	public float getPosX() {
+		return node.getPosition().x;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IPoolBall#getPosY()
+	 */
+	@Override
+	public float getPosY() {
+		return node.getPosition().y;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.IPoolBall#getRadius()
+	 */
+	@Override
+	public float getRadius() {
+		return radius;
+	}
+
+	@Override
+	public Color getTeamColour() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,11 +1,15 @@
 package model.api;
 
+import java.awt.Color;
+
 public interface IPoolBall {
 
-	public float getPosX();
+	float getPosX();
 
-	public float getPosY();
+	float getPosY();
 
-	public float getRadius();
+	float getRadius();
+
+	Color getTeamColour();
 
 }
