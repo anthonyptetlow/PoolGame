@@ -3,13 +3,13 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import model.PoolTable;
+import model.api.IPoolTable;
 
 public class BallCreationListener implements MouseListener {
 
-	private PoolTable model;
+	private IPoolTable model;
 
-	public BallCreationListener(PoolTable model) {
+	public BallCreationListener(IPoolTable model) {
 		this.model = model;
 	}
 

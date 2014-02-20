@@ -17,7 +17,7 @@ public class BallCushionPrototype {
 
 		PoolTable model = new PoolTable();
 		model.createBall(30.0f, 40.0f);
-		model.createPocket(60.0f, 60.0f);
+		// model.createPocket(60.0f, 60.0f);
 		model.createBoarder();
 		new AppWindow(model);
 

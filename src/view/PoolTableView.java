@@ -9,9 +9,9 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import model.PoolTable;
 import model.RectCushion;
 import model.api.IPoolBall;
+import model.api.IPoolTable;
 
 public class PoolTableView extends JPanel implements Observer {
 
@@ -19,9 +19,9 @@ public class PoolTableView extends JPanel implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = -949315898738707714L;
-	private PoolTable model;
+	private IPoolTable model;
 
-	public PoolTableView(PoolTable model) {
+	public PoolTableView(IPoolTable model) {
 		this.model = model;
 		this.model.addObserver(this);
 	}
