@@ -24,8 +24,12 @@ public class PoolTable extends Observable implements IPoolTable {
 		setupTable();
 	}
 
-	public void createBall(float x, float y, Color color) {
-		balls.add(new PoolBall(x, y, color, environment));
+	public PoolBall createBall(float x, float y, Color color) {
+
+		PoolBall ball = new PoolBall(x, y, color, environment);
+		balls.add(ball);
+		return ball;
+
 	}
 
 	public void setupTable() {
@@ -66,7 +70,44 @@ public class PoolTable extends Observable implements IPoolTable {
 	}
 
 	private void rackBalls() {
-		balls.add(new PoolBall(675.0f, 2025.0f, Color.RED, environment));
+		float startX = 675.0f;
+		float startY = 2025.0f;
+		balls.add(new PoolBall(startX, startY, Color.RED, environment));
+
+		balls.add(new PoolBall(startX - 27.0f, startY + 54.0f, Color.YELLOW,
+				environment));
+		balls.add(new PoolBall(startX + 27.0f, startY + 54.0f, Color.YELLOW,
+				environment));
+
+		balls.add(new PoolBall(startX - (2 * 27.0f), startY + (2 * 54.0f),
+				Color.RED, environment));
+		balls.add(new PoolBall(startX, startY + (2 * 54.0f), Color.BLACK,
+				environment));
+		balls.add(new PoolBall(startX + (2 * 27.0f), startY + (2 * 54.0f),
+				Color.RED, environment));
+
+		balls.add(new PoolBall(startX - (3 * 27.0f), startY + (3 * 54.0f),
+				Color.YELLOW, environment));
+		balls.add(new PoolBall(startX - (1 * 27.0f), startY + (3 * 54.0f),
+				Color.YELLOW, environment));
+		balls.add(new PoolBall(startX + (1 * 27.0f), startY + (3 * 54.0f),
+				Color.RED, environment));
+		balls.add(new PoolBall(startX + (3 * 27.0f), startY + (3 * 54.0f),
+				Color.YELLOW, environment));
+
+		balls.add(new PoolBall(startX - (4 * 27.0f), startY + (4 * 54.0f),
+				Color.RED, environment));
+
+		balls.add(new PoolBall(startX - (2 * 27.0f), startY + (4 * 54.0f),
+				Color.YELLOW, environment));
+		balls.add(new PoolBall(startX, startY + (4 * 54.0f), Color.RED,
+				environment));
+		balls.add(new PoolBall(startX + (2 * 27.0f), startY + (4 * 54.0f),
+				Color.YELLOW, environment));
+
+		balls.add(new PoolBall(startX + (4 * 27.0f), startY + (4 * 54.0f),
+				Color.RED, environment));
+
 	}
 
 	/*

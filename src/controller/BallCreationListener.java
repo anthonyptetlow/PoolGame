@@ -6,6 +6,8 @@ import java.awt.event.MouseListener;
 
 import model.api.IPoolTable;
 
+import org.jbox2d.common.Vec2;
+
 public class BallCreationListener implements MouseListener {
 
 	private IPoolTable model;
@@ -24,8 +26,8 @@ public class BallCreationListener implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		model.createBall(100.0f, f, Color.RED);
-		f += 60;
+		model.createBall(675.0f, 675.0f, Color.WHITE).node
+				.setLinearVelocity(new Vec2(0.0f, 3000.0f));
 	}
 
 	@Override

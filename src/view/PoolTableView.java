@@ -36,13 +36,12 @@ public class PoolTableView extends JPanel implements Observer {
 		// (model.getHeight() / getHeight()));
 		Graphics buffer = bufferImage.getGraphics();
 		Graphics2D g2d = (Graphics2D) buffer;
-		g2d.setColor(Color.BLACK);
 		// Draw Pool Table
 
 		// Draw Balls
 
 		for (IPoolBall ball : model.getBalls()) {
-
+			g2d.setColor(ball.getTeamColour());
 			g2d.fillOval(
 					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
 					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
@@ -55,6 +54,7 @@ public class PoolTableView extends JPanel implements Observer {
 					(int) ((ball.getRadius() * 2.0f) * scale));
 
 		}
+		g2d.setColor(Color.BLACK);
 		for (IPocket pocket : model.getPockets()) {
 
 			g2d.fillOval(
@@ -68,6 +68,7 @@ public class PoolTableView extends JPanel implements Observer {
 					(int) ((pocket.getRadius() * 2.0f) * scale),
 					(int) ((pocket.getRadius() * 2.0f) * scale));
 		}
+		g2d.setColor(Color.GREEN);
 
 		for (RectCushion cushion : model.getCushions()) {
 			float width = cushion.getWidth();
@@ -76,6 +77,11 @@ public class PoolTableView extends JPanel implements Observer {
 					(int) ((cushion.getPosX() - (0.5 * width) + offset) * scale),
 					(int) ((cushion.getPosY() - (0.5 * height) + offset) * scale),
 					(int) (width * scale), (int) (height * scale));
+			g2d.fillRect(
+					(int) ((cushion.getPosX() - (0.5 * width) + offset) * scale),
+					(int) ((cushion.getPosY() - (0.5 * height) + offset) * scale),
+					(int) (width * scale), (int) (height * scale));
+
 		}
 
 		g.drawImage(bufferImage, 0, 0, null);

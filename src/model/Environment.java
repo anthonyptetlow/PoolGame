@@ -15,7 +15,7 @@ public class Environment {
 
 	public static final World world = new World(new Vec2(0, 0.0f));
 
-	public static final float timeStep = 1.0f / 10.0f;
+	public static final float timeStep = 1.0f / 24.0f;
 
 	private final int velocityIterations = 6;
 

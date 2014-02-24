@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.List;
 import java.util.Observer;
 
+import model.PoolBall;
 import model.RectCushion;
 
 public interface IPoolTable {
@@ -16,7 +17,7 @@ public interface IPoolTable {
 
 	void addObserver(Observer o);
 
-	public void createBall(float f, float g, Color c);
+	public PoolBall createBall(float f, float g, Color c);
 
 	public void passTime();
 

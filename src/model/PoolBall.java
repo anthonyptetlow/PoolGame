@@ -12,7 +12,7 @@ import org.jbox2d.dynamics.FixtureDef;
 
 public class PoolBall implements IPoolBall {
 	// JavaFX UI for ball
-	private Body node;
+	public Body node;
 	private Color color;
 
 	// Ball radius in pixels
@@ -58,7 +58,7 @@ public class PoolBall implements IPoolBall {
 		body.createFixture(fd);
 		// TODO Remove this velocity
 		// body.setLinearVelocity(new Vec2(-50.0f, 0.0f));
-		body.setLinearDamping(0.05f);
+		body.setLinearDamping(0.005f);
 		body.setUserData(this);
 		return body;
 	}

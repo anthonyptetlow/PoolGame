@@ -90,9 +90,8 @@ public class FakeTable extends Observable implements IPoolTable {
 	}
 
 	@Override
-	public void createBall(float f, float g, Color c) {
-		// TODO Auto-generated method stub
-
+	public PoolBall createBall(float f, float g, Color c) {
+		return null;
 	}
 
 }
