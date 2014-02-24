@@ -12,6 +12,14 @@ public class RectCushion {
 
 	private float width, height;
 
+	/**
+	 * 
+	 * @param posX
+	 *            , posY The center of the rectangle
+	 * @param width
+	 * @param height
+	 * @param e
+	 */
 	public RectCushion(float posX, float posY, float width, float height,
 			Environment e) {
 		this.width = width;

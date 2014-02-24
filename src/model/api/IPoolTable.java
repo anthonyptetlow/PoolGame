@@ -1,5 +1,6 @@
 package model.api;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.Observer;
 
@@ -14,5 +15,9 @@ public interface IPoolTable {
 	public List<IPocket> getPockets();
 
 	void addObserver(Observer o);
+
+	public void createBall(float f, float g, Color c);
+
+	public void passTime();
 
 }

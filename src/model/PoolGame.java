@@ -1,12 +1,21 @@
 package model;
 
+import model.api.IPoolTable;
+
 public class PoolGame {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	private PoolTable poolTable;
+
+	public PoolGame() {
+		rackTable();
+	}
+
+	public void rackTable() {
+		poolTable = new PoolTable();
 
 	}
 
+	public IPoolTable getPoolTable() {
+		return poolTable;
+	}
 }

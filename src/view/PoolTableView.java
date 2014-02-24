@@ -10,6 +10,7 @@ import java.util.Observer;
 import javax.swing.JPanel;
 
 import model.RectCushion;
+import model.api.IPocket;
 import model.api.IPoolBall;
 import model.api.IPoolTable;
 
@@ -20,6 +21,8 @@ public class PoolTableView extends JPanel implements Observer {
 	 */
 	private static final long serialVersionUID = -949315898738707714L;
 	private IPoolTable model;
+	private double scale = 0.25f;
+	private double offset = 50.0f;
 
 	public PoolTableView(IPoolTable model) {
 		this.model = model;
@@ -40,18 +43,39 @@ public class PoolTableView extends JPanel implements Observer {
 
 		for (IPoolBall ball : model.getBalls()) {
 
-			g2d.fillOval((int) (ball.getPosX() - ball.getRadius()),
-					(int) (ball.getPosY() + ball.getRadius()),
-					(int) (ball.getRadius() * 2.0f),
-					(int) (ball.getRadius() * 2.0f));
+			g2d.fillOval(
+					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
+					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
+					(int) ((ball.getRadius() * 2.0f) * scale),
+					(int) ((ball.getRadius() * 2.0f) * scale));
+			g2d.drawOval(
+					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
+					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
+					(int) ((ball.getRadius() * 2.0f) * scale),
+					(int) ((ball.getRadius() * 2.0f) * scale));
+
+		}
+		for (IPocket pocket : model.getPockets()) {
+
+			g2d.fillOval(
+					(int) ((pocket.getPosX() - pocket.getRadius() + offset) * scale),
+					(int) ((pocket.getPosY() - pocket.getRadius() + offset) * scale),
+					(int) ((pocket.getRadius() * 2.0f) * scale),
+					(int) ((pocket.getRadius() * 2.0f) * scale));
+			g2d.drawOval(
+					(int) ((pocket.getPosX() - pocket.getRadius() + offset) * scale),
+					(int) ((pocket.getPosY() - pocket.getRadius() + offset) * scale),
+					(int) ((pocket.getRadius() * 2.0f) * scale),
+					(int) ((pocket.getRadius() * 2.0f) * scale));
 		}
 
 		for (RectCushion cushion : model.getCushions()) {
 			float width = cushion.getWidth();
 			float height = cushion.getHeight();
-			g2d.fillRect((int) (cushion.getPosX() - (0.5 * width)),
-					10 + (int) (cushion.getPosY() - (0.5 * height)),
-					(int) (width), (int) (height));
+			g2d.drawRect(
+					(int) ((cushion.getPosX() - (0.5 * width) + offset) * scale),
+					(int) ((cushion.getPosY() - (0.5 * height) + offset) * scale),
+					(int) (width * scale), (int) (height * scale));
 		}
 
 		g.drawImage(bufferImage, 0, 0, null);

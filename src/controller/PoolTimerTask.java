@@ -3,15 +3,15 @@ package controller;
 import java.util.TimerTask;
 
 import model.Environment;
-import model.PoolTable;
+import model.api.IPoolTable;
 
 import org.jbox2d.dynamics.Body;
 
 public class PoolTimerTask extends TimerTask {
 
-	private PoolTable model;
+	private IPoolTable model;
 
-	public PoolTimerTask(PoolTable model) {
+	public PoolTimerTask(IPoolTable model) {
 		super();
 		this.model = model;
 	}
@@ -20,7 +20,6 @@ public class PoolTimerTask extends TimerTask {
 	public void run() {
 		// isStationary();
 		model.passTime();
-
 	}
 
 	private boolean isStationary() {

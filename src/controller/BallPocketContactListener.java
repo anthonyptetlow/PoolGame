@@ -1,7 +1,7 @@
 package controller;
 
 import model.Environment;
-import model.PoolBall;
+import model.Pocket;
 import model.api.IPoolTable;
 
 import org.jbox2d.callbacks.ContactImpulse;
@@ -21,12 +21,13 @@ public class BallPocketContactListener implements ContactListener {
 	@Override
 	public void beginContact(Contact contact) {
 		Body b = contact.getFixtureA().getBody();
-		if (b.getUserData() instanceof PoolBall) {
-			Environment.bodiesToRemove.add(b);
+		if (b.getUserData() instanceof Pocket) {
+			Environment.bodiesToRemove.add(contact.getFixtureB().getBody());
 		}
-		// b = contact.getFixtureB().getBody();
-		// if (b.getUserData()instanceof PoolBall)
-		// Environment.world.destroyBody(null);
+		b = contact.getFixtureB().getBody();
+		if (b.getUserData() instanceof Pocket) {
+			Environment.bodiesToRemove.add(contact.getFixtureA().getBody());
+		}
 	}
 
 	@Override

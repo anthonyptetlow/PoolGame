@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -13,19 +14,17 @@ public class FakeTable extends Observable implements IPoolTable {
 	private Environment environment;
 	private List<IPocket> pockets;
 	private List<RectCushion> cushions;
-	private Cue cue;
 	private List<IPoolBall> balls;
 
 	public FakeTable() {
 		balls = new ArrayList<IPoolBall>();
 		cushions = new ArrayList<RectCushion>();
 		pockets = new ArrayList<IPocket>();
-		cue = null;
 		environment = new Environment(this);
 	}
 
 	public void createBall(float x, float y) {
-		balls.add(new PoolBall(x, y, environment));
+		balls.add(new PoolBall(x, y, Color.RED, environment));
 	}
 
 	public void createPocket(float x, float y) {
@@ -88,6 +87,12 @@ public class FakeTable extends Observable implements IPoolTable {
 	@Override
 	public List<IPocket> getPockets() {
 		return pockets;
+	}
+
+	@Override
+	public void createBall(float f, float g, Color c) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

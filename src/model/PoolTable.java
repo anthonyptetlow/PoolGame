@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -13,33 +14,59 @@ public class PoolTable extends Observable implements IPoolTable {
 	private Environment environment;
 	private List<IPocket> pockets;
 	private List<RectCushion> cushions;
-	private Cue cue;
 	private List<IPoolBall> balls;
 
 	public PoolTable() {
 		balls = new ArrayList<IPoolBall>();
 		cushions = new ArrayList<RectCushion>();
 		pockets = new ArrayList<IPocket>();
-		cue = null;
 		environment = new Environment(this);
+		setupTable();
 	}
 
-	public void createBall(float x, float y) {
-		balls.add(new PoolBall(x, y, environment));
+	public void createBall(float x, float y, Color color) {
+		balls.add(new PoolBall(x, y, color, environment));
 	}
 
-	public void createPocket(float x, float y) {
-		pockets.add(new Pocket(x, y, environment));
+	public void setupTable() {
+		// TODO Clean the mathematics up here
+		// Build Cussions
+		// Top
+		cushions.add(new RectCushion((1275 / 2) + 37.5f, -10.0f, 1275, 20,
+				environment));
+		// Left1
+		cushions.add(new RectCushion(-10.0f, (1275 / 2.0f) + 37.5f, 20.0f,
+				1275, environment));
+		// Left2
+		cushions.add(new RectCushion(-10.0f,
+				1275 + 75.0f + 37.5f + (1275.0f / 2.0f), 20.0f, 1275.0f,
+				environment));
+		// Bottom
+		cushions.add(new RectCushion((1275 / 2) + 37.5f, 2700.0f + 10.0f, 1275,
+				20, environment));
+
+		// Right1
+		cushions.add(new RectCushion(1275 + 10.0f + 75.0f,
+				(1275 / 2.0f) + 37.5f, 20.0f, 1275, environment));
+		// Right2
+		cushions.add(new RectCushion(1275 + 10.0f + 75.0f,
+				1275 + 75.0f + 37.5f + (1275.0f / 2.0f), 20.0f, 1275.0f,
+				environment));
+		pockets.add(new Pocket(0, 0, environment));
+		pockets.add(new Pocket(1275.0f + 75.0f, 0, environment));
+		pockets.add(new Pocket(-10.0f, 1275.0f + 75.0f, environment));
+		pockets.add(new Pocket(0.0f, (1275.0f + 75.0f) * 2.0f, environment));
+		pockets.add(new Pocket(1275.0f + 75.0f + 10.0f, 1275.0f + 75.0f,
+				environment));
+		pockets.add(new Pocket(1275.0f + 75.0f, (1275.0f + 75.0f) * 2.0f,
+				environment));
+
+		rackBalls();
+
 	}
 
-	public void createBoarder() {
-		float width = 100.0f;
-		float height = 20.0f;
-		cushions.add(new RectCushion(50.0f, 10.0f, width, height, environment));
-		cushions.add(new RectCushion(60.0f, 100.0f, width, height, environment));
-		cushions.add(new RectCushion(110.0f, 50.0f, height, width, environment));
-		cushions.add(new RectCushion(10.0f, 50.0f, height, width, environment));
-
+	private void rackBalls() {
+		balls.add(new PoolBall(675.0f, 2025.0f, Color.RED, environment));
 	}
 
 	/*

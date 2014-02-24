@@ -2,13 +2,14 @@ package ai.engine.mocks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import model.RectCushion;
 import model.api.IPocket;
 import model.api.IPoolBall;
 import model.api.IPoolTable;
 
-public class MockTable implements IPoolTable {
+public class MockTable extends Observable implements IPoolTable {
 
 	private List<IPoolBall> balls;
 	public List<IPocket> pockets;
@@ -34,6 +35,12 @@ public class MockTable implements IPoolTable {
 	@Override
 	public List<IPocket> getPockets() {
 		return pockets;
+	}
+
+	@Override
+	public void createBall(float f, float g) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

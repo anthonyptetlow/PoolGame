@@ -3,7 +3,7 @@ package main;
 import java.util.Timer;
 
 import model.Environment;
-import model.PoolTable;
+import model.FakeTable;
 import view.AppWindow;
 import controller.PoolTimerTask;
 
@@ -15,7 +15,7 @@ public class BallCushionPrototype {
 	 */
 	public static void main(String[] args) throws InterruptedException {
 
-		PoolTable model = new PoolTable();
+		FakeTable model = new FakeTable();
 		model.createBall(30.0f, 40.0f);
 		// model.createPocket(60.0f, 60.0f);
 		model.createBoarder();

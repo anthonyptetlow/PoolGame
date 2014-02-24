@@ -5,7 +5,6 @@ import java.awt.Color;
 import model.api.IPoolBall;
 
 import org.jbox2d.collision.shapes.CircleShape;
-import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.BodyType;
@@ -14,13 +13,23 @@ import org.jbox2d.dynamics.FixtureDef;
 public class PoolBall implements IPoolBall {
 	// JavaFX UI for ball
 	private Body node;
+	private Color color;
 
 	// Ball radius in pixels
-	private float radius = 5.0f;
+	private float radius = 27.0f;
 
-	public PoolBall(float posX, float posY, Environment e) {
+	/**
+	 * 
+	 * @param posX
+	 *            , posY The center of the Ball
+	 * @param width
+	 * @param height
+	 * @param e
+	 */
+	public PoolBall(float posX, float posY, Color color, Environment e) {
 		// TODO Fix Dimentions
 		node = create(posX, posY, e);
+		this.color = color;
 	}
 
 	/**
@@ -48,7 +57,7 @@ public class PoolBall implements IPoolBall {
 		Body body = Environment.world.createBody(bd);
 		body.createFixture(fd);
 		// TODO Remove this velocity
-		body.setLinearVelocity(new Vec2(50.0f, 50.0f));
+		// body.setLinearVelocity(new Vec2(-50.0f, 0.0f));
 		body.setLinearDamping(0.05f);
 		body.setUserData(this);
 		return body;
@@ -86,8 +95,7 @@ public class PoolBall implements IPoolBall {
 
 	@Override
 	public Color getTeamColour() {
-		// TODO Auto-generated method stub
-		return null;
+		return color;
 	}
 
 }
