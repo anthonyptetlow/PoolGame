@@ -26,8 +26,8 @@ public class BallCreationListener implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		model.createBall(675.0f, 675.0f, Color.WHITE).node
-				.setLinearVelocity(new Vec2(0.0f, 3000.0f));
+		model.createBall(0.675f, 0.675f, Color.WHITE).node
+				.setLinearVelocity(new Vec2(-0.05f, 0.0f));
 	}
 
 	@Override

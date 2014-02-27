@@ -59,8 +59,8 @@ public class RectCushion {
 		// Create a fixture for ball
 		FixtureDef fd = new FixtureDef();
 		fd.shape = ps;
-		fd.density = 0.6f;
-		fd.friction = 1f;
+		fd.density = 0.5f;
+		fd.friction = 0.1f;
 		fd.restitution = 1f;
 
 		Body body = e.world.createBody(bd);

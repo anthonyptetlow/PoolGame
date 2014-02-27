@@ -36,76 +36,76 @@ public class PoolTable extends Observable implements IPoolTable {
 		// TODO Clean the mathematics up here
 		// Build Cussions
 		// Top
-		cushions.add(new RectCushion((1275 / 2) + 37.5f, -10.0f, 1275, 20,
-				environment));
+		cushions.add(new RectCushion((1.275f / 2.0f) + 0.0375f, -0.010f,
+				1.275f, 0.020f, environment));
 		// Left1
-		cushions.add(new RectCushion(-10.0f, (1275 / 2.0f) + 37.5f, 20.0f,
-				1275, environment));
+		cushions.add(new RectCushion(-0.01f, (1.275f / 2.0f) + 0.0375f, 0.02f,
+				1.275f, environment));
 		// Left2
-		cushions.add(new RectCushion(-10.0f,
-				1275 + 75.0f + 37.5f + (1275.0f / 2.0f), 20.0f, 1275.0f,
+		cushions.add(new RectCushion(-0.01f,
+				1.275f + 0.075f + 0.0375f + (1.2750f / 2.0f), 0.02f, 1.275f,
 				environment));
 		// Bottom
-		cushions.add(new RectCushion((1275 / 2) + 37.5f, 2700.0f + 10.0f, 1275,
-				20, environment));
+		cushions.add(new RectCushion((1.275f / 2.0f) + 0.0375f, 2.700f + 0.01f,
+				1.275f, 0.02f, environment));
 
 		// Right1
-		cushions.add(new RectCushion(1275 + 10.0f + 75.0f,
-				(1275 / 2.0f) + 37.5f, 20.0f, 1275, environment));
+		cushions.add(new RectCushion(1.275f + 0.01f + 0.075f,
+				(1.275f / 2.0f) + 0.0375f, 0.02f, 1.275f, environment));
 		// Right2
-		cushions.add(new RectCushion(1275 + 10.0f + 75.0f,
-				1275 + 75.0f + 37.5f + (1275.0f / 2.0f), 20.0f, 1275.0f,
+		cushions.add(new RectCushion(1.275f + 0.01f + 0.075f,
+				1.275f + 0.075f + 0.0375f + (1.275f / 2f), 0.02f, 1.275f,
 				environment));
 		pockets.add(new Pocket(0, 0, environment));
-		pockets.add(new Pocket(1275.0f + 75.0f, 0, environment));
-		pockets.add(new Pocket(-10.0f, 1275.0f + 75.0f, environment));
-		pockets.add(new Pocket(0.0f, (1275.0f + 75.0f) * 2.0f, environment));
-		pockets.add(new Pocket(1275.0f + 75.0f + 10.0f, 1275.0f + 75.0f,
+		pockets.add(new Pocket(1.275f + 0.075f, 0, environment));
+		pockets.add(new Pocket(-0.01f, 1.275f + 0.075f, environment));
+		pockets.add(new Pocket(0.0f, (1.275f + 0.075f) * 2.0f, environment));
+		pockets.add(new Pocket(1.275f + 0.075f + 0.01f, 1.275f + 0.075f,
 				environment));
-		pockets.add(new Pocket(1275.0f + 75.0f, (1275.0f + 75.0f) * 2.0f,
+		pockets.add(new Pocket(1.275f + 0.075f, (1.275f + 0.075f) * 2.0f,
 				environment));
 
-		rackBalls();
+		// rackBalls();
 
 	}
 
 	private void rackBalls() {
-		float startX = 675.0f;
-		float startY = 2025.0f;
+		float startX = 0.675f;
+		float startY = 2.025f;
 		balls.add(new PoolBall(startX, startY, Color.RED, environment));
 
-		balls.add(new PoolBall(startX - 27.0f, startY + 54.0f, Color.YELLOW,
+		balls.add(new PoolBall(startX - 0.027f, startY + 0.054f, Color.YELLOW,
 				environment));
-		balls.add(new PoolBall(startX + 27.0f, startY + 54.0f, Color.YELLOW,
+		balls.add(new PoolBall(startX + 0.027f, startY + 0.054f, Color.YELLOW,
 				environment));
 
-		balls.add(new PoolBall(startX - (2 * 27.0f), startY + (2 * 54.0f),
+		balls.add(new PoolBall(startX - (2 * 0.027f), startY + (2 * 0.054f),
 				Color.RED, environment));
-		balls.add(new PoolBall(startX, startY + (2 * 54.0f), Color.BLACK,
+		balls.add(new PoolBall(startX, startY + (2 * 0.054f), Color.BLACK,
 				environment));
-		balls.add(new PoolBall(startX + (2 * 27.0f), startY + (2 * 54.0f),
-				Color.RED, environment));
-
-		balls.add(new PoolBall(startX - (3 * 27.0f), startY + (3 * 54.0f),
-				Color.YELLOW, environment));
-		balls.add(new PoolBall(startX - (1 * 27.0f), startY + (3 * 54.0f),
-				Color.YELLOW, environment));
-		balls.add(new PoolBall(startX + (1 * 27.0f), startY + (3 * 54.0f),
-				Color.RED, environment));
-		balls.add(new PoolBall(startX + (3 * 27.0f), startY + (3 * 54.0f),
-				Color.YELLOW, environment));
-
-		balls.add(new PoolBall(startX - (4 * 27.0f), startY + (4 * 54.0f),
+		balls.add(new PoolBall(startX + (2 * 0.027f), startY + (2 * 0.054f),
 				Color.RED, environment));
 
-		balls.add(new PoolBall(startX - (2 * 27.0f), startY + (4 * 54.0f),
+		balls.add(new PoolBall(startX - (3 * 0.027f), startY + (3 * 0.054f),
 				Color.YELLOW, environment));
-		balls.add(new PoolBall(startX, startY + (4 * 54.0f), Color.RED,
-				environment));
-		balls.add(new PoolBall(startX + (2 * 27.0f), startY + (4 * 54.0f),
+		balls.add(new PoolBall(startX - (1 * 0.027f), startY + (3 * 0.054f),
+				Color.YELLOW, environment));
+		balls.add(new PoolBall(startX + (1 * 0.027f), startY + (3 * 0.054f),
+				Color.RED, environment));
+		balls.add(new PoolBall(startX + (3 * 0.027f), startY + (3 * 0.054f),
 				Color.YELLOW, environment));
 
-		balls.add(new PoolBall(startX + (4 * 27.0f), startY + (4 * 54.0f),
+		balls.add(new PoolBall(startX - (4 * 0.027f), startY + (4 * 0.054f),
+				Color.RED, environment));
+
+		balls.add(new PoolBall(startX - (2 * 0.027f), startY + (4 * 0.054f),
+				Color.YELLOW, environment));
+		balls.add(new PoolBall(startX, startY + (4 * 0.054f), Color.RED,
+				environment));
+		balls.add(new PoolBall(startX + (2 * 0.027f), startY + (4 * 0.054f),
+				Color.YELLOW, environment));
+
+		balls.add(new PoolBall(startX + (4 * 0.027f), startY + (4 * 0.054f),
 				Color.RED, environment));
 
 	}

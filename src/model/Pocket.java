@@ -14,7 +14,7 @@ public class Pocket implements IPocket {
 
 	// Pocket radius in pixels
 	// TODO Check the size of a pocket
-	private float radius = 75.0f / 2.0f;
+	private float radius = 0.075f / 2.0f;
 
 	/**
 	 * 
@@ -41,7 +41,7 @@ public class Pocket implements IPocket {
 
 		FixtureDef fd = new FixtureDef();
 		fd.shape = cs;
-		fd.density = 1.0f;
+		fd.density = 1.7f;
 		fd.friction = 0.1f;
 		fd.restitution = 1.0f;
 		Body body = Environment.world.createBody(bd);
