@@ -21,7 +21,7 @@ public class PoolTableView extends JPanel implements Observer {
 	 */
 	private static final long serialVersionUID = -949315898738707714L;
 	private IPoolTable model;
-	private double scale = 300f;
+	private double scale = 500f;
 	private double offset = 0.10f;
 
 	public PoolTableView(IPoolTable model) {
