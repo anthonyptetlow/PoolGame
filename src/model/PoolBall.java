@@ -51,14 +51,14 @@ public class PoolBall implements IPoolBall {
 		FixtureDef fd = new FixtureDef();
 		fd.shape = cs;
 		fd.density = 1.0f;
-		fd.friction = 0.01f;
-		fd.restitution = 0f;
+		fd.friction = 0.00f;
+		fd.restitution = 1.00f;
 
 		Body body = Environment.world.createBody(bd);
 		body.createFixture(fd);
 		// TODO Remove this velocity
 		// body.setLinearVelocity(new Vec2(-50.0f, 0.0f));
-		body.setLinearDamping(0.07f);
+		// body.setLinearDamping(0.07f);
 		body.setUserData(this);
 		return body;
 	}
@@ -98,4 +98,7 @@ public class PoolBall implements IPoolBall {
 		return color;
 	}
 
+	public Body getNode() {
+		return node;
+	}
 }

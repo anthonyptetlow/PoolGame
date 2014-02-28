@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +35,14 @@ public class Environment {
 	public void step() {
 		world.step(timeStep, velocityIterations, positionIterations);
 		for (Body body : bodiesToRemove) {
+			if (((PoolBall) body.getUserData()).getTeamColour().equals(
+					Color.white)) {
+				System.out.println("Remove White");
+				poolTable.removeWhite();
+			} else
+				poolTable.getBalls().remove(body.getUserData());
 			world.destroyBody(body);
-			poolTable.getBalls().remove(body.getUserData());
 		}
+		bodiesToRemove.clear();
 	}
-
 }

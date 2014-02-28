@@ -54,6 +54,21 @@ public class PoolTableView extends JPanel implements Observer {
 					(int) ((ball.getRadius() * 2.0f) * scale));
 
 		}
+
+		IPoolBall ball = model.getWhiteBall();
+		if (ball != null) {
+			g2d.setColor(ball.getTeamColour());
+			g2d.fillOval(
+					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
+					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
+					(int) ((ball.getRadius() * 2.0f) * scale),
+					(int) ((ball.getRadius() * 2.0f) * scale));
+			g2d.drawOval(
+					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
+					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
+					(int) ((ball.getRadius() * 2.0f) * scale),
+					(int) ((ball.getRadius() * 2.0f) * scale));
+		}
 		g2d.setColor(Color.BLACK);
 		for (IPocket pocket : model.getPockets()) {
 

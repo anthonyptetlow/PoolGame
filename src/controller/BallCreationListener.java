@@ -1,6 +1,6 @@
 package controller;
 
-import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -11,41 +11,51 @@ import org.jbox2d.common.Vec2;
 public class BallCreationListener implements MouseListener {
 
 	private IPoolTable model;
-	private Float f;
+	private Point pressedPoint = null;
+	private float scale = 0.01f;
 
 	public BallCreationListener(IPoolTable model) {
 		this.model = model;
-		f = 0.0f;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		model.createBall(0.675f, 0.675f, Color.WHITE).node
-				.setLinearVelocity(new Vec2(-0.0f, 0.1f));
+		System.out.println(e.getPoint());
+		if (!model.addWhiteBall(0.675f, 0.675f)) {
+			pressedPoint = e.getPoint();
+		}
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if (pressedPoint != null) {
+			System.out.println("Pressed:\t" + pressedPoint);
+			System.out.println("Released:\t" + e.getPoint());
+			float x = (pressedPoint.x - e.getPoint().x) * scale;
+			float y = (pressedPoint.y - e.getPoint().y) * scale;
+
+			System.out.println("X:\t" + x);
+			System.out.println("Y:\t" + y);
+			model.getWhiteBall().getNode().setLinearVelocity(new Vec2(x, y));
+
+		}
+
+		pressedPoint = null;
 
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

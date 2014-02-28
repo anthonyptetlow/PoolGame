@@ -19,6 +19,12 @@ public interface IPoolTable {
 
 	public PoolBall createBall(float f, float g, Color c);
 
+	public boolean addWhiteBall(float x, float y);
+
 	public void passTime();
+
+	public IPoolBall getWhiteBall();
+
+	public void removeWhite();
 
 }

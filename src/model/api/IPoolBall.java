@@ -2,6 +2,8 @@ package model.api;
 
 import java.awt.Color;
 
+import org.jbox2d.dynamics.Body;
+
 public interface IPoolBall {
 
 	float getPosX();
@@ -12,4 +14,5 @@ public interface IPoolBall {
 
 	Color getTeamColour();
 
+	Body getNode();
 }
