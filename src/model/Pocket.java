@@ -26,6 +26,13 @@ public class Pocket implements IPocket {
 	 */
 	public Pocket(float posX, float posY, Environment e) {
 		node = create(posX, posY, e);
+		radius = 0.075f / 2.0f;
+	}
+
+	public Pocket(float posX, float posY, float diameter, Environment e) {
+
+		node = create(posX, posY, e);
+		radius = diameter / 2.0f;
 	}
 
 	private Body create(float posX, float posY, Environment e) {

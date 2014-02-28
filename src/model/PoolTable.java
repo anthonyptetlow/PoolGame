@@ -57,9 +57,11 @@ public class PoolTable extends Observable implements IPoolTable {
 				1.275f + 0.075f + 0.01f, 1.275f, 0.020f, environment));
 
 		pockets.add(new Pocket(0, 0, environment));
-		pockets.add(new Pocket(1.275f + 0.075f, 0, environment));
+		pockets.add(new Pocket(1.275f + 0.075f, -0.05f, 0.1f, environment));
+
 		pockets.add(new Pocket(0.0f, 1.275f + 0.075f, environment));
-		pockets.add(new Pocket(1.275f + 0.075f, 1.275f + 0.075f, environment));
+		pockets.add(new Pocket(1.275f + 0.075f, 1.275f + 0.075f + 0.05f, 0.1f,
+				environment));
 
 		pockets.add(new Pocket((1.275f + 0.075f) * 2.0f, 0, environment));
 		pockets.add(new Pocket((1.275f + 0.075f) * 2.0f, 1.275f + 0.075f,
