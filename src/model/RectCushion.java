@@ -60,7 +60,7 @@ public class RectCushion {
 		FixtureDef fd = new FixtureDef();
 		fd.shape = ps;
 		fd.density = 1.0f;
-		fd.friction = 0.0f;
+		fd.friction = 0.01f;
 		fd.restitution = 1.0f;
 
 		Body body = Environment.world.createBody(bd);
