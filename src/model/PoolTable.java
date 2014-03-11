@@ -15,13 +15,15 @@ public class PoolTable extends Observable implements IPoolTable {
 	private List<IPocket> pockets;
 	private List<RectCushion> cushions;
 	private List<IPoolBall> balls;
+	private List<IPoolBall> pocketedBalls;
 	private IPoolBall white;
 
-	public PoolTable() {
+	public PoolTable(Environment environment) {
 		balls = new ArrayList<IPoolBall>();
 		cushions = new ArrayList<RectCushion>();
 		pockets = new ArrayList<IPocket>();
-		environment = new Environment(this);
+		pocketedBalls = new ArrayList<IPoolBall>();
+		this.environment = environment;
 		setupTable();
 	}
 
@@ -35,7 +37,6 @@ public class PoolTable extends Observable implements IPoolTable {
 
 	public void setupTable() {
 		// TODO Clean the mathematics up here
-
 		// Top 1
 		cushions.add(new RectCushion((1.275f / 2.0f) + 0.0375f, -0.010f,
 				1.275f, 0.020f, environment));
@@ -165,7 +166,7 @@ public class PoolTable extends Observable implements IPoolTable {
 	@Override
 	public boolean addWhiteBall(float x, float y) {
 		if (white == null) {
-			white = new PoolBall(x, y, Color.white, environment);
+			white = new PoolBall(x, y, Color.WHITE, environment);
 			return true;
 		}
 		return false;
@@ -178,5 +179,10 @@ public class PoolTable extends Observable implements IPoolTable {
 
 	public void removeWhite() {
 		white = null;
+	}
+
+	@Override
+	public void pocket(IPoolBall ball) {
+		pocketedBalls.add(ball);
 	}
 }

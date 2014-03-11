@@ -56,7 +56,7 @@ public class PoolBall implements IPoolBall {
 
 		Body body = Environment.world.createBody(bd);
 		body.createFixture(fd);
-		body.setLinearDamping(0.07f);
+		body.setLinearDamping(0.1f);
 		body.setUserData(this);
 		return body;
 	}

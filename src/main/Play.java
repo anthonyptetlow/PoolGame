@@ -4,20 +4,22 @@ import java.util.Timer;
 
 import model.Environment;
 import model.PoolGame;
-import view.AppWindow;
+import model.api.IPoolGame;
+import view.GameFrame;
 import controller.PoolTimerTask;
 
-public class Run {
+public class Play {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		PoolGame p = new PoolGame();
-		AppWindow window = new AppWindow(p.getPoolTable());
+
+		IPoolGame game = new PoolGame();
+		new GameFrame(game);
 		Timer timer = new Timer();
-		// Set at 10ms
-		timer.schedule(new PoolTimerTask(p.getPoolTable()), 0,
+		// TODO Move this to a more appropriate place
+		timer.schedule(new PoolTimerTask(game), 0,
 				(long) (Environment.timeStep * 100.0f));
 	}
 }

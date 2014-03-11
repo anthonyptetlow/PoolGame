@@ -9,22 +9,24 @@ import model.RectCushion;
 
 public interface IPoolTable {
 
-	public List<IPoolBall> getBalls();
+	List<IPoolBall> getBalls();
 
-	public List<RectCushion> getCushions();
+	List<RectCushion> getCushions();
 
-	public List<IPocket> getPockets();
+	List<IPocket> getPockets();
 
 	void addObserver(Observer o);
 
-	public PoolBall createBall(float f, float g, Color c);
+	PoolBall createBall(float f, float g, Color c);
 
-	public boolean addWhiteBall(float x, float y);
+	boolean addWhiteBall(float x, float y);
 
-	public void passTime();
+	void passTime();
 
-	public IPoolBall getWhiteBall();
+	IPoolBall getWhiteBall();
 
-	public void removeWhite();
+	void removeWhite();
+
+	void pocket(IPoolBall ball);
 
 }

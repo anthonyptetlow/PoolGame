@@ -14,7 +14,7 @@ import model.api.IPocket;
 import model.api.IPoolBall;
 import model.api.IPoolTable;
 
-public class PoolTableView extends JPanel implements Observer {
+public class PoolTablePanel extends JPanel implements Observer {
 
 	/**
 	 * 
@@ -24,9 +24,19 @@ public class PoolTableView extends JPanel implements Observer {
 	private double scale = 500f;
 	private double offset = 0.10f;
 
-	public PoolTableView(IPoolTable model) {
+	public PoolTablePanel(IPoolTable model) {
 		this.model = model;
 		this.model.addObserver(this);
+	}
+
+	@Override
+	public int getWidth() {
+		return Math.max(super.getWidth(), 1450);
+	}
+
+	@Override
+	public int getHeight() {
+		return Math.max(super.getHeight(), 900);
 	}
 
 	@Override
@@ -37,7 +47,7 @@ public class PoolTableView extends JPanel implements Observer {
 		Graphics buffer = bufferImage.getGraphics();
 		Graphics2D g2d = (Graphics2D) buffer;
 		// Draw Pool Table
-
+		// TODO Clean up the drawing of objects
 		// Draw Balls
 
 		for (IPoolBall ball : model.getBalls()) {
