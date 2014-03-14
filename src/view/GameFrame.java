@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import model.api.IPoolGame;
 import controller.BallCreationListener;
+import controller.MyMouseMotionListener;
 
 public class GameFrame extends JFrame {
 
@@ -26,8 +27,9 @@ public class GameFrame extends JFrame {
 		holder.setLayout(new BorderLayout());
 		this.setContentPane(holder);
 		holder.add(setUpStats(), BorderLayout.NORTH);
-		JPanel table = setupTable();
+		PoolTablePanel table = setupTable();
 		table.addMouseListener(new BallCreationListener(game.getPoolTable()));
+		table.addMouseMotionListener(new MyMouseMotionListener(table));
 		holder.add(table, BorderLayout.CENTER);
 		holder.add(createBallTray(), BorderLayout.SOUTH);
 		setSize(table.getWidth(), table.getHeight());
@@ -37,7 +39,7 @@ public class GameFrame extends JFrame {
 		return new PlayerPanel(game);
 	}
 
-	private JPanel setupTable() {
+	private PoolTablePanel setupTable() {
 		return new PoolTablePanel(game.getPoolTable());
 	}
 
