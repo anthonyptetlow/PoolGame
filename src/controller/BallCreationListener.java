@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -12,8 +11,10 @@ import org.jbox2d.common.Vec2;
 public class BallCreationListener implements MouseListener {
 
 	private IPoolTable model;
-	private Point pressedPoint = null;
-	private float scale = 0.005f;
+	private boolean takeShot = true;
+	// TODO Move to shared properties class
+	private float scaleVis = 500f;
+	private float offset = 0.10f;
 
 	public BallCreationListener(IPoolTable model) {
 		this.model = model;
@@ -26,23 +27,27 @@ public class BallCreationListener implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if (!model.addWhiteBall(0.675f, 0.675f)) {
-			pressedPoint = e.getPoint();
+		if (model.getWhiteBall() == null) {
+			model.addWhiteBall(0.675f, 0.675f);
+			takeShot = false;
+		} else {
+			takeShot = true;
 		}
-
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if (Environment.isStationary())
-			if (pressedPoint != null) {
-				float x = (pressedPoint.x - e.getPoint().x) * scale;
-				float y = (pressedPoint.y - e.getPoint().y) * scale;
+			if (takeShot) {
+				float xCorrected = ((e.getPoint().x / scaleVis) - offset);
+				float yCorrected = ((e.getPoint().y / scaleVis) - offset);
+
+				float x = (model.getWhiteBall().getPosX() - xCorrected);
+				float y = (model.getWhiteBall().getPosY() - yCorrected);
 
 				model.getWhiteBall().getNode()
 						.setLinearVelocity(new Vec2(x, y));
 			}
-		pressedPoint = null;
 
 	}
 

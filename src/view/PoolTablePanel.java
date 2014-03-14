@@ -52,36 +52,21 @@ public class PoolTablePanel extends JPanel implements Observer {
 
 		for (IPoolBall ball : model.getBalls()) {
 			g2d.setColor(ball.getTeamColour());
-			g2d.fillOval(
-					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
-					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
-					(int) ((ball.getRadius() * 2.0f) * scale),
-					(int) ((ball.getRadius() * 2.0f) * scale));
-			g2d.drawOval(
-					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
-					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
-					(int) ((ball.getRadius() * 2.0f) * scale),
-					(int) ((ball.getRadius() * 2.0f) * scale));
-
+			drawCircle(g2d, ball);
 		}
 
 		IPoolBall ball = model.getWhiteBall();
-		if (ball != null) {
-			g2d.setColor(ball.getTeamColour());
-			g2d.fillOval(
-					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
-					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
-					(int) ((ball.getRadius() * 2.0f) * scale),
-					(int) ((ball.getRadius() * 2.0f) * scale));
-			g2d.drawOval(
-					(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
-					(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
-					(int) ((ball.getRadius() * 2.0f) * scale),
-					(int) ((ball.getRadius() * 2.0f) * scale));
-		}
+		g2d.setColor(Color.WHITE);
+		if (ball != null)
+			drawCircle(g2d, ball);
+
+		// double xDraw = ((ball.getPosX() + offset) * scale);
+		// double yDraw = ((ball.getPosX() + offset) * scale);
+		// System.out.println("(" + xDraw + ", " + yDraw + ")");
+		// System.out.println(MouseInfo.getPointerInfo().getLocation());
+
 		g2d.setColor(Color.BLACK);
 		for (IPocket pocket : model.getPockets()) {
-
 			g2d.fillOval(
 					(int) ((pocket.getPosX() - pocket.getRadius() + offset) * scale),
 					(int) ((pocket.getPosY() - pocket.getRadius() + offset) * scale),
@@ -110,6 +95,19 @@ public class PoolTablePanel extends JPanel implements Observer {
 		}
 
 		g.drawImage(bufferImage, 0, 0, null);
+	}
+
+	private void drawCircle(Graphics2D g2d, IPoolBall ball) {
+		g2d.fillOval(
+				(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
+				(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
+				(int) ((ball.getRadius() * 2.0f) * scale),
+				(int) ((ball.getRadius() * 2.0f) * scale));
+		g2d.drawOval(
+				(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
+				(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
+				(int) ((ball.getRadius() * 2.0f) * scale),
+				(int) ((ball.getRadius() * 2.0f) * scale));
 	}
 
 	@Override
