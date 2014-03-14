@@ -30,10 +30,11 @@ public class PoolTimerTask extends TimerTask {
 			if (Environment.firstCollisionThisTurn == null) {
 				System.out.println("Foul: No Ball Hit");
 				model.setFoulShot(true);
-			} else if (!Environment.firstCollisionThisTurn.getTeamColour()
+			} else if (Environment.firstCollisionThisTurn.getTeamColour()
 					.equals(Color.BLACK)) {
 
 				for (IPoolBall ballOnTable : model.getPoolTable().getBalls()) {
+
 					if (ballOnTable.getTeamColour().equals(
 							model.getCurrentPlayer().getColor())) {
 						System.out
@@ -44,7 +45,7 @@ public class PoolTimerTask extends TimerTask {
 				}
 
 			} else if (!Environment.firstCollisionThisTurn.getTeamColour()
-					.equals(model.getCurrentPlayer())) {
+					.equals(model.getCurrentPlayer().getColor())) {
 				System.out.println("Foul: Opponent Ball Hit First");
 				model.setFoulShot(true);
 			}
@@ -76,7 +77,9 @@ public class PoolTimerTask extends TimerTask {
 							}
 						}
 						gameOver = true;
-					}
+					} else if (ball.getTeamColour().equals(
+							model.getCurrentPlayer().getColor()))
+						model.setShotInHand(true);
 				}
 			} else { // no team assigned
 

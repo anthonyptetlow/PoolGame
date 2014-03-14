@@ -84,34 +84,34 @@ public class PoolTable extends Observable implements IPoolTable {
 		balls.add(new PoolBall(startX + 0.054f, startY + 0.027f, Color.YELLOW,
 				environment));
 
-		balls.add(new PoolBall(startX + (2 * 0.054f), startY - (2 * 0.027f),
-				Color.RED, environment));
+		// balls.add(new PoolBall(startX + (2 * 0.054f), startY - (2 * 0.027f),
+		// Color.RED, environment));
 		balls.add(new PoolBall(startX + (2 * 0.054f), startY, Color.BLACK,
 				environment));
-		balls.add(new PoolBall(startX + (2 * 0.054f), startY + (2 * 0.027f),
-				Color.RED, environment));
+		// balls.add(new PoolBall(startX + (2 * 0.054f), startY + (2 * 0.027f),
+		// Color.RED, environment));
 
-		balls.add(new PoolBall(startX + (3 * 0.054f), startY - (3 * 0.027f),
-				Color.YELLOW, environment));
-		balls.add(new PoolBall(startX + (3 * 0.054f), startY - (1 * 0.027f),
-				Color.YELLOW, environment));
-		balls.add(new PoolBall(startX + (3 * 0.054f), startY + (1 * 0.027f),
-				Color.RED, environment));
-		balls.add(new PoolBall(startX + (3 * 0.054f), startY + (3 * 0.027f),
-				Color.YELLOW, environment));
-
-		balls.add(new PoolBall(startX + (4 * 0.054f), startY - (4 * 0.027f),
-				Color.RED, environment));
-
-		balls.add(new PoolBall(startX + (4 * 0.054f), startY - (2 * 0.027f),
-				Color.YELLOW, environment));
-		balls.add(new PoolBall(startX + (4 * 0.054f), startY, Color.RED,
-				environment));
-		balls.add(new PoolBall(startX + (4 * 0.054f), startY + (2 * 0.027f),
-				Color.YELLOW, environment));
-
-		balls.add(new PoolBall(startX + (4 * 0.054f), startY + (4 * 0.027f),
-				Color.RED, environment));
+		// balls.add(new PoolBall(startX + (3 * 0.054f), startY - (3 * 0.027f),
+		// Color.YELLOW, environment));
+		// balls.add(new PoolBall(startX + (3 * 0.054f), startY - (1 * 0.027f),
+		// Color.YELLOW, environment));
+		// balls.add(new PoolBall(startX + (3 * 0.054f), startY + (1 * 0.027f),
+		// Color.RED, environment));
+		// balls.add(new PoolBall(startX + (3 * 0.054f), startY + (3 * 0.027f),
+		// Color.YELLOW, environment));
+		//
+		// balls.add(new PoolBall(startX + (4 * 0.054f), startY - (4 * 0.027f),
+		// Color.RED, environment));
+		//
+		// balls.add(new PoolBall(startX + (4 * 0.054f), startY - (2 * 0.027f),
+		// Color.YELLOW, environment));
+		// balls.add(new PoolBall(startX + (4 * 0.054f), startY, Color.RED,
+		// environment));
+		// balls.add(new PoolBall(startX + (4 * 0.054f), startY + (2 * 0.027f),
+		// Color.YELLOW, environment));
+		//
+		// balls.add(new PoolBall(startX + (4 * 0.054f), startY + (4 * 0.027f),
+		// Color.RED, environment));
 
 	}
 

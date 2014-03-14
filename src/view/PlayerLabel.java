@@ -16,6 +16,7 @@ public class PlayerLabel extends JLabel implements Observer {
 		super("Player " + player.getId());
 		this.player = player;
 		player.addObserver(this);
+		update(null, null);
 	}
 
 	@Override

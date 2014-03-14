@@ -21,9 +21,14 @@ public class PoolGame extends Observable implements IPoolGame {
 	public PoolGame() {
 		rackTable();
 		players = new HashSet<IPlayer>();
-		currentPlayer = new Player(1);
+
+		currentPlayer = new Player(2);
+		currentPlayer.setColor(Color.YELLOW);
 		players.add(currentPlayer);
-		players.add(new Player(2));
+		currentPlayer = new Player(1);
+		currentPlayer.setColor(Color.RED);
+		players.add(currentPlayer);
+
 		shotInHand = false;
 	}
 

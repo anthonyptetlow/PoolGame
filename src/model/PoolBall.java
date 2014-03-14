@@ -43,6 +43,7 @@ public class PoolBall implements IPoolBall {
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DYNAMIC;
 		bd.position.set(posX, posY);
+		bd.setFixedRotation(true);
 
 		CircleShape cs = new CircleShape();
 		cs.m_radius = radius * 1.0f; // We need to convert radius to JBox2D
