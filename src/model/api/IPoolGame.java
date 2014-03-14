@@ -1,5 +1,6 @@
 package model.api;
 
+import java.awt.Color;
 import java.util.Observer;
 import java.util.Set;
 
@@ -13,8 +14,6 @@ public interface IPoolGame {
 
 	void switchPlayer();
 
-	void addObserver(Observer o);
-
 	boolean isShotInHand();
 
 	void setShotInHand(boolean shotInHand);
@@ -22,4 +21,9 @@ public interface IPoolGame {
 	boolean isFoulShot();
 
 	void setFoulShot(boolean foulShot);
+
+	void setPlayerColors(Color currentPlayer);
+
+	void addObserver(Observer o);
+
 }

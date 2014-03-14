@@ -3,10 +3,8 @@ package view;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.api.IPlayer;
 import model.api.IPoolGame;
 import controller.BallCreationListener;
 
@@ -36,16 +34,7 @@ public class GameFrame extends JFrame {
 	}
 
 	private JPanel setUpStats() {
-		// TODO Rework this panel to use a Layout manager
-		JPanel stats = new JPanel();
-		for (IPlayer player : game.getPlayers()) {
-			String label = "Player " + player.getId();
-			if (player.getTeam() != null) {
-				label += ":\t" + player.getTeam();
-			}
-			stats.add(new JLabel(label));
-		}
-		return stats;
+		return new PlayerPanel(game);
 	}
 
 	private JPanel setupTable() {
@@ -53,10 +42,6 @@ public class GameFrame extends JFrame {
 	}
 
 	private JPanel createBallTray() {
-		// JPanel tray = new JPanel();
-		// tray.add(new JLabel("Player " + game.getCurrentPlayer().getId()
-		// + "'s Turn"));
-		//
 		// // TODO Create A panel to display a list of pocketed pool balls
 		// return tray;
 		return new TurnPanel(game);

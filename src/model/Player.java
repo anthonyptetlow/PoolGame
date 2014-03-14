@@ -1,10 +1,11 @@
 package model;
 
 import java.awt.Color;
+import java.util.Observable;
 
 import model.api.IPlayer;
 
-public class Player implements IPlayer {
+public class Player extends Observable implements IPlayer {
 
 	private Color color;
 	private int id;
@@ -26,6 +27,8 @@ public class Player implements IPlayer {
 	@Override
 	public void setColor(Color color) {
 		this.color = color;
+		setChanged();
+		notifyObservers();
 	}
 
 	/*

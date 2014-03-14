@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.util.HashSet;
 import java.util.Observable;
 import java.util.Set;
@@ -44,6 +45,24 @@ public class PoolGame extends Observable implements IPoolGame {
 	public IPlayer getCurrentPlayer() {
 		return currentPlayer;
 
+	}
+
+	public void setPlayerColors(Color currentPlayerColor) {
+
+		for (IPlayer player : players) {
+			if (player.equals(currentPlayer)) {
+				player.setColor(currentPlayerColor);
+			} else {
+				if (currentPlayerColor.equals(Color.RED))
+					player.setColor(Color.YELLOW);
+				if (currentPlayerColor.equals(Color.YELLOW))
+					player.setColor(Color.RED);
+
+			}
+		}
+
+		setChanged();
+		notifyObservers();
 	}
 
 	@Override

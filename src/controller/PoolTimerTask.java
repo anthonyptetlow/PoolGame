@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.TimerTask;
 
 import model.Environment;
-import model.api.IPlayer;
 import model.api.IPoolBall;
 import model.api.IPoolGame;
 
@@ -12,11 +11,13 @@ public class PoolTimerTask extends TimerTask {
 
 	private IPoolGame model;
 	private boolean wasStationary;
+	private boolean gameOver;
 
 	public PoolTimerTask(IPoolGame model) {
 		super();
 		this.model = model;
 		wasStationary = Environment.isStationary();
+		gameOver = false;
 	}
 
 	@Override
@@ -70,20 +71,13 @@ public class PoolTimerTask extends TimerTask {
 								.getBalls()) {
 							if (ballOnTable.getTeamColour().equals(
 									model.getCurrentPlayer().getColor())) {
-								System.out.println("GameOver: Player "
-										+ model.getCurrentPlayer() + " looses");
-								System.exit(1);
+								gameOver = true;
+								model.setFoulShot(true);
 							}
 						}
-						System.out.println("GameOver: Player "
-								+ model.getCurrentPlayer() + " Wins!");
-						// TODO Check that no fouls have been made, a foul on
-						// black pot meanse loose not win
-						System.exit(1);
+						gameOver = true;
 					}
-
 				}
-
 			} else { // no team assigned
 
 				if (Environment.pottedThisTurn.size() > 0) {
@@ -94,24 +88,26 @@ public class PoolTimerTask extends TimerTask {
 						System.out.println("GameOver: Player "
 								+ model.getCurrentPlayer() + " looses");
 						System.exit(1);
-					} else {
+					} else if (currentPlayerColor != Color.WHITE) {
 
-						for (IPlayer player : model.getPlayers()) {
-							if (player.equals(model.getCurrentPlayer())) {
-								player.setColor(currentPlayerColor);
-							} else {
-								if (currentPlayerColor.equals(Color.RED))
-									player.setColor(Color.YELLOW);
-								if (currentPlayerColor.equals(Color.YELLOW))
-									player.setColor(Color.RED);
-
-							}
-						}
+						model.setPlayerColors(currentPlayerColor);
 					}
 				}// No balls potted
 
 				// Still check for white ball and black ball potted
 			}
+			if (gameOver) {
+				System.out
+						.print("GameOver: Player " + model.getCurrentPlayer());
+				if (model.isFoulShot())
+					System.out.println("Looses");
+				else {
+					System.out.println("Wins");
+
+				}
+				System.exit(1);
+			}
+
 			// Clear Move State
 			Environment.firstCollisionThisTurn = null;
 			Environment.pottedThisTurn.clear();
