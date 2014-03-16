@@ -1,8 +1,8 @@
 package model;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import model.api.IPoolBall;
 import model.api.IPoolGame;
@@ -23,19 +23,19 @@ public class Environment {
 
 	private final int positionIterations = 2;
 
-	public static List<Body> bodiesToRemove;
+	public static Set<Body> bodiesToRemove;
 
 	private static IPoolGame poolGame;
 
-	public static List<IPoolBall> pottedThisTurn;
+	public static Set<IPoolBall> pottedThisTurn;
 
 	public static IPoolBall firstCollisionThisTurn;
 
 	public Environment(IPoolGame poolGame) {
-		bodiesToRemove = new ArrayList<Body>();
+		bodiesToRemove = new LinkedHashSet<Body>();
 		world.setContactListener(new PoolCollisionListener());
 		this.poolGame = poolGame;
-		pottedThisTurn = new ArrayList<IPoolBall>();
+		pottedThisTurn = new LinkedHashSet<IPoolBall>();
 		firstCollisionThisTurn = null;
 	}
 

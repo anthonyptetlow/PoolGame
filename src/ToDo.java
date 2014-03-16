@@ -1,9 +1,6 @@
 public class ToDo {
 	// TODO Fix Pocket implementation.
 	// TODO Fix the displaying of the bumpers
-	// TODO Change all interactions to be saved until the end of an iteration
-	// TODO Fix imp so that only one ref to a potted ball is added (Set instead
-	// of list should gaurente this)
 	// TODO Rework the Loop systehm such that it con tinues until all balls
 	// stationary
 	// TODO CHange the placing of the white ball

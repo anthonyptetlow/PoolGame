@@ -87,7 +87,7 @@ public class PoolTimerTask extends TimerTask {
 
 				if (Environment.pottedThisTurn.size() > 0) {
 					Color currentPlayerColor = Environment.pottedThisTurn
-							.get(0).getTeamColour();
+							.iterator().next().getTeamColour();
 					// Check for black ball
 					if (currentPlayerColor.equals(Color.BLACK)) {
 						System.out.println("GameOver: Player "
