@@ -1,8 +1,6 @@
 public class ToDo {
 	// TODO Fix Pocket implementation.
 	// TODO Fix the displaying of the bumpers
-	// TODO Rework the Loop systehm such that it con tinues until all balls
-	// stationary
 
 	/*
 	 * Had issues with getting the visual rep to matrch the physics Had 2
