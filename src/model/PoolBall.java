@@ -16,7 +16,7 @@ public class PoolBall implements IPoolBall {
 	private Color color;
 
 	// Ball radius in pixels
-	private float radius = 0.027f;
+	private final float radius = 0.027f;
 
 	/**
 	 * 
@@ -44,8 +44,8 @@ public class PoolBall implements IPoolBall {
 		bd.setFixedRotation(true);
 
 		CircleShape cs = new CircleShape();
-		cs.m_radius = radius * 1.0f; // We need to convert radius to JBox2D
-										// equivalent
+		cs.m_radius = radius; // We need to convert radius to JBox2D
+								// equivalent
 		// Create a fixture for ball
 		FixtureDef fd = new FixtureDef();
 		fd.shape = cs;

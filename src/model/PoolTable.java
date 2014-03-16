@@ -37,37 +37,44 @@ public class PoolTable extends Observable implements IPoolTable {
 
 	public void setupTable() {
 		// TODO Clean the mathematics up here
+		float pocketRadius = 0.0375f;
+		float pocketD = pocketRadius * 2.0f;
+		float cussionLength = 1.275f;
+		float offset = 0.01f;
+		float doubleOffset = offset * 2.0f;
 		// Top 1
-		cushions.add(new RectCushion((1.275f / 2.0f) + 0.0375f, -0.010f,
-				1.275f, 0.020f, environment));
+		cushions.add(new RectCushion((cussionLength / 2.0f) + pocketRadius,
+				-offset, cussionLength, doubleOffset, environment));
 		// Top 2
-		cushions.add(new RectCushion(
-				1.275f + 0.075f + 0.0375f + (1.2750f / 2.0f), -0.010f, 1.275f,
-				0.020f, environment));
+		cushions.add(new RectCushion(cussionLength + pocketD + pocketRadius
+				+ (1.2750f / 2.0f), -offset, cussionLength, doubleOffset,
+				environment));
 		// Left
-		cushions.add(new RectCushion(-0.01f, (1.275f / 2.0f) + 0.0375f, 0.02f,
-				1.275f, environment));
+		cushions.add(new RectCushion(-offset, (cussionLength / 2.0f)
+				+ pocketRadius, 0.02f, cussionLength, environment));
 		// right
-		cushions.add(new RectCushion(2.700f + 0.01f, (1.275f / 2.0f) + 0.0375f,
-				0.02f, 1.275f, environment));
+		cushions.add(new RectCushion(2.700f + offset, (cussionLength / 2.0f)
+				+ pocketRadius, 0.02f, cussionLength, environment));
 		// Bottom 1
-		cushions.add(new RectCushion((1.275f / 2.0f) + 0.0375f,
-				1.275f + 0.075f + 0.010f, 1.275f, 0.020f, environment));
+		cushions.add(new RectCushion((cussionLength / 2.0f) + pocketRadius,
+				cussionLength + pocketD + offset, cussionLength, doubleOffset,
+				environment));
 		// Bottom 2
-		cushions.add(new RectCushion(
-				1.275f + 0.075f + 0.0375f + (1.2750f / 2.0f),
-				1.275f + 0.075f + 0.01f, 1.275f, 0.020f, environment));
+		cushions.add(new RectCushion(cussionLength + pocketD + pocketRadius
+				+ (1.2750f / 2.0f), cussionLength + pocketD + offset,
+				cussionLength, doubleOffset, environment));
 
 		pockets.add(new Pocket(0, 0, environment));
-		pockets.add(new Pocket(1.275f + 0.075f, -0.05f, 0.1f, environment));
-
-		pockets.add(new Pocket(0.0f, 1.275f + 0.075f, environment));
-		pockets.add(new Pocket(1.275f + 0.075f, 1.275f + 0.075f + 0.05f, 0.1f,
+		pockets.add(new Pocket(cussionLength + pocketD, -0.05f, 0.1f,
 				environment));
 
-		pockets.add(new Pocket((1.275f + 0.075f) * 2.0f, 0, environment));
-		pockets.add(new Pocket((1.275f + 0.075f) * 2.0f, 1.275f + 0.075f,
-				environment));
+		pockets.add(new Pocket(0.0f, cussionLength + pocketD, environment));
+		pockets.add(new Pocket(cussionLength + pocketD, cussionLength + pocketD
+				+ 0.05f, 0.1f, environment));
+
+		pockets.add(new Pocket((cussionLength + pocketD) * 2.0f, 0, environment));
+		pockets.add(new Pocket((cussionLength + pocketD) * 2.0f, cussionLength
+				+ pocketD, environment));
 
 		rackBalls();
 
@@ -76,44 +83,46 @@ public class PoolTable extends Observable implements IPoolTable {
 	private void rackBalls() {
 		float startX = 2.025f;
 		float startY = 0.675f;
+
+		float ballDiameter = 0.054f;
+		float ballRadius = ballDiameter / 2.0f;
+
 		balls.add(new PoolBall(startX, startY, Color.RED, environment));
-		//
-		// balls.add(new PoolBall(startX + 0.054f, startY - 0.027f,
-		// Color.YELLOW,
-		// environment));
-		//
-		// balls.add(new PoolBall(startX + 0.054f, startY + 0.027f,
-		// Color.YELLOW,
-		// environment));
 
-		// balls.add(new PoolBall(startX + (2 * 0.054f), startY - (2 * 0.027f),
-		// Color.RED, environment));
-		balls.add(new PoolBall(startX + (2 * 0.054f), startY, Color.BLACK,
+		balls.add(new PoolBall(startX + ballDiameter, startY - ballRadius,
+				Color.YELLOW, environment));
+
+		balls.add(new PoolBall(startX + ballDiameter, startY + ballRadius,
+				Color.YELLOW, environment));
+
+		balls.add(new PoolBall(startX + (2 * ballDiameter), startY
+				- (2 * ballRadius), Color.RED, environment));
+		balls.add(new PoolBall(startX + (2 * ballDiameter), startY,
+				Color.BLACK, environment));
+		balls.add(new PoolBall(startX + (2 * ballDiameter), startY
+				+ (2 * ballRadius), Color.RED, environment));
+
+		balls.add(new PoolBall(startX + (3 * ballDiameter), startY
+				- (3 * ballRadius), Color.YELLOW, environment));
+		balls.add(new PoolBall(startX + (3 * ballDiameter), startY
+				- (1 * ballRadius), Color.YELLOW, environment));
+		balls.add(new PoolBall(startX + (3 * ballDiameter), startY
+				+ (1 * ballRadius), Color.RED, environment));
+		balls.add(new PoolBall(startX + (3 * ballDiameter), startY
+				+ (3 * ballRadius), Color.YELLOW, environment));
+
+		balls.add(new PoolBall(startX + (4 * ballDiameter), startY
+				- (4 * ballRadius), Color.RED, environment));
+
+		balls.add(new PoolBall(startX + (4 * ballDiameter), startY
+				- (2 * ballRadius), Color.YELLOW, environment));
+		balls.add(new PoolBall(startX + (4 * ballDiameter), startY, Color.RED,
 				environment));
-		// balls.add(new PoolBall(startX + (2 * 0.054f), startY + (2 * 0.027f),
-		// Color.RED, environment));
+		balls.add(new PoolBall(startX + (4 * ballDiameter), startY
+				+ (2 * ballRadius), Color.YELLOW, environment));
 
-		// balls.add(new PoolBall(startX + (3 * 0.054f), startY - (3 * 0.027f),
-		// Color.YELLOW, environment));
-		// balls.add(new PoolBall(startX + (3 * 0.054f), startY - (1 * 0.027f),
-		// Color.YELLOW, environment));
-		// balls.add(new PoolBall(startX + (3 * 0.054f), startY + (1 * 0.027f),
-		// Color.RED, environment));
-		// balls.add(new PoolBall(startX + (3 * 0.054f), startY + (3 * 0.027f),
-		// Color.YELLOW, environment));
-		//
-		// balls.add(new PoolBall(startX + (4 * 0.054f), startY - (4 * 0.027f),
-		// Color.RED, environment));
-		//
-		// balls.add(new PoolBall(startX + (4 * 0.054f), startY - (2 * 0.027f),
-		// Color.YELLOW, environment));
-		// balls.add(new PoolBall(startX + (4 * 0.054f), startY, Color.RED,
-		// environment));
-		// balls.add(new PoolBall(startX + (4 * 0.054f), startY + (2 * 0.027f),
-		// Color.YELLOW, environment));
-		//
-		// balls.add(new PoolBall(startX + (4 * 0.054f), startY + (4 * 0.027f),
-		// Color.RED, environment));
+		balls.add(new PoolBall(startX + (4 * ballDiameter), startY
+				+ (4 * ballRadius), Color.RED, environment));
 
 	}
 

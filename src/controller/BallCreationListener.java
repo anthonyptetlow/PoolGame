@@ -8,13 +8,14 @@ import model.api.IPoolTable;
 
 import org.jbox2d.common.Vec2;
 
+import Util.Properties;
+
 public class BallCreationListener implements MouseListener {
 
 	private IPoolTable model;
 	private boolean takeShot = true;
+
 	// TODO Move to shared properties class
-	private float scaleVis = 500f;
-	private float offset = 0.10f;
 
 	public BallCreationListener(IPoolTable model) {
 		this.model = model;
@@ -58,7 +59,7 @@ public class BallCreationListener implements MouseListener {
 	}
 
 	private float screenPressToModelpoint(int point) {
-		return (point / scaleVis) - offset;
+		return (point / Properties.MODEL_TO_GRAPHIC) - Properties.VISUAL_OFFSET;
 	}
 
 	@Override

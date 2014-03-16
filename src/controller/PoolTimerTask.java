@@ -22,6 +22,7 @@ public class PoolTimerTask extends TimerTask {
 
 	@Override
 	public void run() {
+		// TODO Tidy this up
 		boolean isStationary = Environment.isStationary();
 		if (isStationary && !wasStationary) {
 			// Do rules regulation

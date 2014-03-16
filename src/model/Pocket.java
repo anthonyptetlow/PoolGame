@@ -13,7 +13,7 @@ public class Pocket implements IPocket {
 	private Body node;
 
 	// Pocket radius in pixels
-	private float radius = 0.075f / 2.0f;
+	private final float radius;
 
 	/**
 	 * 
@@ -24,12 +24,10 @@ public class Pocket implements IPocket {
 	 * @param e
 	 */
 	public Pocket(float posX, float posY, Environment e) {
-		node = create(posX, posY, e);
-		radius = 0.075f / 2.0f;
+		this(posX, posY, 0.075f, e);
 	}
 
 	public Pocket(float posX, float posY, float diameter, Environment e) {
-
 		node = create(posX, posY, e);
 		radius = diameter / 2.0f;
 	}
@@ -41,7 +39,7 @@ public class Pocket implements IPocket {
 		bd.position.set(posX, posY);
 
 		CircleShape cs = new CircleShape();
-		cs.m_radius = radius * 1.0f;
+		cs.m_radius = radius;
 
 		FixtureDef fd = new FixtureDef();
 		fd.shape = cs;

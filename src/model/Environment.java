@@ -11,6 +11,7 @@ import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.World;
 
+import Util.Properties;
 import controller.PoolCollisionListener;
 
 public class Environment {
@@ -68,10 +69,10 @@ public class Environment {
 		Body body = Environment.world.getBodyList();
 		if (poolGame.getPoolTable().getWhiteBall() != null
 				&& poolGame.getPoolTable().getWhiteBall().getNode()
-						.getLinearVelocity().length() > 0.001f)
+						.getLinearVelocity().length() > Properties.STATIONARY_VELOCITY)
 			return false;
 		while ((body = body.m_next) != null) {
-			if (body.getLinearVelocity().length() > 0.001f)
+			if (body.getLinearVelocity().length() > Properties.STATIONARY_VELOCITY)
 				return false;
 		}
 		return true;

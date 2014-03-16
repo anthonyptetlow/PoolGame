@@ -15,6 +15,7 @@ import model.RectCushion;
 import model.api.IPocket;
 import model.api.IPoolBall;
 import model.api.IPoolTable;
+import Util.Properties;
 
 public class PoolTablePanel extends JPanel implements Observer {
 
@@ -23,10 +24,9 @@ public class PoolTablePanel extends JPanel implements Observer {
 	 */
 	private static final long serialVersionUID = -949315898738707714L;
 	private IPoolTable model;
-	private double scale = 500f;
 	private double offset = 0.10f;
 	private Point mousePosition;
-	private double dirScale = 2.0f;
+	private double sightSc = 2.0f;
 
 	public PoolTablePanel(IPoolTable model) {
 		this.model = model;
@@ -50,7 +50,8 @@ public class PoolTablePanel extends JPanel implements Observer {
 	@Override
 	public void paint(Graphics g) {
 		Image bufferImage = createImage(getWidth(), getHeight());
-		// double scale = Math.max((model.getWidth() / getWidth()),
+		// double Properties.MODEL_TO_GRAPHIC = Math.max((model.getWidth() /
+		// getWidth()),
 		// (model.getHeight() / getHeight()));
 		Graphics buffer = bufferImage.getGraphics();
 		Graphics2D g2d = (Graphics2D) buffer;
@@ -72,12 +73,14 @@ public class PoolTablePanel extends JPanel implements Observer {
 
 				g2d.setColor(Color.BLACK);
 
-				double x1 = (ball.getPosX() + offset) * scale;
-				double y1 = (ball.getPosY() + offset) * scale;
+				double x1 = (ball.getPosX() + offset)
+						* Properties.MODEL_TO_GRAPHIC;
+				double y1 = (ball.getPosY() + offset)
+						* Properties.MODEL_TO_GRAPHIC;
 
-				dirScale = Math.abs(1000.0f / (x1 - mousePosition.x));
-				double x2 = x1 + ((x1 - mousePosition.x) * dirScale);
-				double y2 = y1 + ((y1 - mousePosition.y) * dirScale);
+				sightSc = Math.abs(1000.0f / (x1 - mousePosition.x));
+				double x2 = x1 + ((x1 - mousePosition.x) * sightSc);
+				double y2 = y1 + ((y1 - mousePosition.y) * sightSc);
 
 				g2d.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 			}
@@ -85,15 +88,15 @@ public class PoolTablePanel extends JPanel implements Observer {
 		g2d.setColor(Color.BLACK);
 		for (IPocket pocket : model.getPockets()) {
 			g2d.fillOval(
-					(int) ((pocket.getPosX() - pocket.getRadius() + offset) * scale),
-					(int) ((pocket.getPosY() - pocket.getRadius() + offset) * scale),
-					(int) ((pocket.getRadius() * 2.0f) * scale),
-					(int) ((pocket.getRadius() * 2.0f) * scale));
+					(int) ((pocket.getPosX() - pocket.getRadius() + offset) * Properties.MODEL_TO_GRAPHIC),
+					(int) ((pocket.getPosY() - pocket.getRadius() + offset) * Properties.MODEL_TO_GRAPHIC),
+					(int) ((pocket.getRadius() * 2.0f) * Properties.MODEL_TO_GRAPHIC),
+					(int) ((pocket.getRadius() * 2.0f) * Properties.MODEL_TO_GRAPHIC));
 			g2d.drawOval(
-					(int) ((pocket.getPosX() - pocket.getRadius() + offset) * scale),
-					(int) ((pocket.getPosY() - pocket.getRadius() + offset) * scale),
-					(int) ((pocket.getRadius() * 2.0f) * scale),
-					(int) ((pocket.getRadius() * 2.0f) * scale));
+					(int) ((pocket.getPosX() - pocket.getRadius() + offset) * Properties.MODEL_TO_GRAPHIC),
+					(int) ((pocket.getPosY() - pocket.getRadius() + offset) * Properties.MODEL_TO_GRAPHIC),
+					(int) ((pocket.getRadius() * 2.0f) * Properties.MODEL_TO_GRAPHIC),
+					(int) ((pocket.getRadius() * 2.0f) * Properties.MODEL_TO_GRAPHIC));
 		}
 		g2d.setColor(Color.GREEN);
 
@@ -101,13 +104,15 @@ public class PoolTablePanel extends JPanel implements Observer {
 			float width = cushion.getWidth();
 			float height = cushion.getHeight();
 			g2d.drawRect(
-					(int) ((cushion.getPosX() - (0.5 * width) + offset) * scale),
-					(int) ((cushion.getPosY() - (0.5 * height) + offset) * scale),
-					(int) (width * scale), (int) (height * scale));
+					(int) ((cushion.getPosX() - (0.5 * width) + offset) * Properties.MODEL_TO_GRAPHIC),
+					(int) ((cushion.getPosY() - (0.5 * height) + offset) * Properties.MODEL_TO_GRAPHIC),
+					(int) (width * Properties.MODEL_TO_GRAPHIC),
+					(int) (height * Properties.MODEL_TO_GRAPHIC));
 			g2d.fillRect(
-					(int) ((cushion.getPosX() - (0.5 * width) + offset) * scale),
-					(int) ((cushion.getPosY() - (0.5 * height) + offset) * scale),
-					(int) (width * scale), (int) (height * scale));
+					(int) ((cushion.getPosX() - (0.5 * width) + offset) * Properties.MODEL_TO_GRAPHIC),
+					(int) ((cushion.getPosY() - (0.5 * height) + offset) * Properties.MODEL_TO_GRAPHIC),
+					(int) (width * Properties.MODEL_TO_GRAPHIC),
+					(int) (height * Properties.MODEL_TO_GRAPHIC));
 
 		}
 
@@ -116,15 +121,15 @@ public class PoolTablePanel extends JPanel implements Observer {
 
 	private void drawCircle(Graphics2D g2d, IPoolBall ball) {
 		g2d.fillOval(
-				(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
-				(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
-				(int) ((ball.getRadius() * 2.0f) * scale),
-				(int) ((ball.getRadius() * 2.0f) * scale));
+				(int) ((ball.getPosX() - ball.getRadius() + offset) * Properties.MODEL_TO_GRAPHIC),
+				(int) ((ball.getPosY() - ball.getRadius() + offset) * Properties.MODEL_TO_GRAPHIC),
+				(int) ((ball.getRadius() * 2.0f) * Properties.MODEL_TO_GRAPHIC),
+				(int) ((ball.getRadius() * 2.0f) * Properties.MODEL_TO_GRAPHIC));
 		g2d.drawOval(
-				(int) ((ball.getPosX() - ball.getRadius() + offset) * scale),
-				(int) ((ball.getPosY() - ball.getRadius() + offset) * scale),
-				(int) ((ball.getRadius() * 2.0f) * scale),
-				(int) ((ball.getRadius() * 2.0f) * scale));
+				(int) ((ball.getPosX() - ball.getRadius() + offset) * Properties.MODEL_TO_GRAPHIC),
+				(int) ((ball.getPosY() - ball.getRadius() + offset) * Properties.MODEL_TO_GRAPHIC),
+				(int) ((ball.getRadius() * 2.0f) * Properties.MODEL_TO_GRAPHIC),
+				(int) ((ball.getRadius() * 2.0f) * Properties.MODEL_TO_GRAPHIC));
 	}
 
 	@Override
