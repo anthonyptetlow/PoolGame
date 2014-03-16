@@ -117,18 +117,6 @@ public class PoolTable extends Observable implements IPoolTable {
 
 	}
 
-	/*
-	 * // TODO Remove this method and replace with a cushion creation method
-	 * public void createGroundBox() { PolygonShape groundBox = new
-	 * PolygonShape(); groundBox.setAsBox(50.0f, 10.0f);
-	 * 
-	 * BodyDef groundBodyDef = new BodyDef(); groundBodyDef.position.set(0.0f,
-	 * -10.0f);
-	 * 
-	 * Body groundBody = environment.world.createBody(groundBodyDef);
-	 * 
-	 * groundBody.createFixture(groundBox, 0.0f); }
-	 */
 	public void passTime() {
 		environment.step();
 		setChanged();

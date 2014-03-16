@@ -44,7 +44,6 @@ public class RectCushion {
 	 * 
 	 * @param e
 	 */
-	// TODO Rebuild this to be tidy
 	private Body create(float posX, float posY, Environment e) {
 		// Create an JBox2D body defination for ball.
 		BodyDef bd = new BodyDef();
@@ -52,7 +51,6 @@ public class RectCushion {
 		bd.position.set(posX, posY);
 
 		PolygonShape ps = new PolygonShape();
-		// FIXME Work out exact dimensions
 		ps.setAsBox(0.5f * width, 0.5f * height);
 
 		// equivalent

@@ -13,7 +13,6 @@ public class Pocket implements IPocket {
 	private Body node;
 
 	// Pocket radius in pixels
-	// TODO Check the size of a pocket
 	private float radius = 0.075f / 2.0f;
 
 	/**
@@ -41,8 +40,6 @@ public class Pocket implements IPocket {
 		bd.type = BodyType.STATIC;
 		bd.position.set(posX, posY);
 
-		// FIXME Rework the shape so colision appears whent he users ball is
-		// over half way into the pocket
 		CircleShape cs = new CircleShape();
 		cs.m_radius = radius * 1.0f;
 

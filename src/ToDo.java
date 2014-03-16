@@ -1,6 +1,7 @@
 public class ToDo {
-	// TODO Fix Pocket implementation.
-	// TODO Fix the displaying of the bumpers
+	// TODO Rework the shape so colision appears whent he users ball is
+	// over half way into the pocket
+	// FIXME Fix the displaying of the bumpers
 
 	/*
 	 * Had issues with getting the visual rep to matrch the physics Had 2

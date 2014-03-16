@@ -27,7 +27,6 @@ public class PoolBall implements IPoolBall {
 	 * @param e
 	 */
 	public PoolBall(float posX, float posY, Color color, Environment e) {
-		// TODO Fix Dimentions
 		node = create(posX, posY, e);
 		this.color = color;
 	}
@@ -37,7 +36,6 @@ public class PoolBall implements IPoolBall {
 	 * 
 	 * @param e
 	 */
-	// TODO Rebuild this to be tidy
 	private Body create(float posX, float posY, Environment e) {
 		// Create an JBox2D body defination for ball.
 		BodyDef bd = new BodyDef();
