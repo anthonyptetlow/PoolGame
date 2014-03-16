@@ -52,4 +52,9 @@ public class Player extends Observable implements IPlayer {
 		return null;
 
 	}
+
+	@Override
+	public String toString() {
+		return getId() + " (" + getTeam() + ")";
+	}
 }

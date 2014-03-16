@@ -77,12 +77,14 @@ public class PoolTable extends Observable implements IPoolTable {
 		float startX = 2.025f;
 		float startY = 0.675f;
 		balls.add(new PoolBall(startX, startY, Color.RED, environment));
-
-		balls.add(new PoolBall(startX + 0.054f, startY - 0.027f, Color.YELLOW,
-				environment));
-
-		balls.add(new PoolBall(startX + 0.054f, startY + 0.027f, Color.YELLOW,
-				environment));
+		//
+		// balls.add(new PoolBall(startX + 0.054f, startY - 0.027f,
+		// Color.YELLOW,
+		// environment));
+		//
+		// balls.add(new PoolBall(startX + 0.054f, startY + 0.027f,
+		// Color.YELLOW,
+		// environment));
 
 		// balls.add(new PoolBall(startX + (2 * 0.054f), startY - (2 * 0.027f),
 		// Color.RED, environment));

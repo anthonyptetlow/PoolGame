@@ -52,20 +52,16 @@ public class PoolTimerTask extends TimerTask {
 
 			// check white ball potted
 			for (IPoolBall ball : Environment.pottedThisTurn) {
-				if (ball.getTeamColour().equals(Color.WHITE))
+				if (ball.getTeamColour().equals(Color.WHITE)) {
 					System.out.println("Foul: Pocketed White");
-				model.setFoulShot(true);
+					model.setFoulShot(true);
+				}
 			}
 
 			if (model.getCurrentPlayer().getColor() != null) {
-
 				for (IPoolBall ball : Environment.pottedThisTurn) {
-					// If potted opponents ball foul
-					if (!ball.getTeamColour().equals(
-							model.getCurrentPlayer().getColor())) {
-						System.out.println("Foul: Potted Opponents Ball");
-						model.setFoulShot(true);
-					} else if (ball.getTeamColour().equals(Color.BLACK)) {
+
+					if (ball.getTeamColour().equals(Color.BLACK)) {
 						// Check current player and state of table
 
 						for (IPoolBall ballOnTable : model.getPoolTable()
@@ -78,8 +74,14 @@ public class PoolTimerTask extends TimerTask {
 						}
 						gameOver = true;
 					} else if (ball.getTeamColour().equals(
-							model.getCurrentPlayer().getColor()))
+							model.getCurrentPlayer().getColor())) {
 						model.setShotInHand(true);
+					} else // If potted opponents ball foul
+					if (!ball.getTeamColour().equals(
+							model.getCurrentPlayer().getColor())) {
+						System.out.println("Foul: Potted Opponents Ball");
+						model.setFoulShot(true);
+					}
 				}
 			} else { // no team assigned
 
@@ -103,9 +105,9 @@ public class PoolTimerTask extends TimerTask {
 				System.out
 						.print("GameOver: Player " + model.getCurrentPlayer());
 				if (model.isFoulShot())
-					System.out.println("Looses");
+					System.out.println(" Looses");
 				else {
-					System.out.println("Wins");
+					System.out.println(" Wins");
 
 				}
 				System.exit(1);
