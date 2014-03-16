@@ -28,7 +28,13 @@ public class BallCreationListener implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (model.getWhiteBall() == null) {
-			model.addWhiteBall(0.675f, 0.675f);
+
+			float xCorrected = screenPressToModelpoint(e.getPoint().x);
+			float yCorrected = screenPressToModelpoint(e.getPoint().y);
+			if (xCorrected < 0.675f) {
+				model.addWhiteBall(xCorrected, yCorrected);
+			}
+
 			takeShot = false;
 		} else {
 			takeShot = true;
@@ -39,8 +45,8 @@ public class BallCreationListener implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		if (Environment.isStationary())
 			if (takeShot) {
-				float xCorrected = ((e.getPoint().x / scaleVis) - offset);
-				float yCorrected = ((e.getPoint().y / scaleVis) - offset);
+				float xCorrected = screenPressToModelpoint(e.getPoint().x);
+				float yCorrected = screenPressToModelpoint(e.getPoint().y);
 
 				float x = (model.getWhiteBall().getPosX() - xCorrected);
 				float y = (model.getWhiteBall().getPosY() - yCorrected);
@@ -49,6 +55,10 @@ public class BallCreationListener implements MouseListener {
 						.setLinearVelocity(new Vec2(x, y));
 			}
 
+	}
+
+	private float screenPressToModelpoint(int point) {
+		return (point / scaleVis) - offset;
 	}
 
 	@Override

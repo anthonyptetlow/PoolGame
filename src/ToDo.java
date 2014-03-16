@@ -3,7 +3,6 @@ public class ToDo {
 	// TODO Fix the displaying of the bumpers
 	// TODO Rework the Loop systehm such that it con tinues until all balls
 	// stationary
-	// TODO CHange the placing of the white ball
 
 	/*
 	 * Had issues with getting the visual rep to matrch the physics Had 2
