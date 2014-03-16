@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.util.HashSet;
 import java.util.Observable;
 import java.util.Set;
+import java.util.Timer;
 
 import model.api.IPlayer;
 import model.api.IPoolGame;
 import model.api.IPoolTable;
+import controller.PoolTimerTask;
 
 public class PoolGame extends Observable implements IPoolGame {
 
@@ -28,8 +30,11 @@ public class PoolGame extends Observable implements IPoolGame {
 		currentPlayer = new Player(1);
 		currentPlayer.setColor(Color.RED);
 		players.add(currentPlayer);
-
 		shotInHand = false;
+		// Start the physics loop
+		Timer timer = new Timer();
+		timer.schedule(new PoolTimerTask(this), 0,
+				(long) (Environment.timeStep * 100.0f));
 	}
 
 	private void rackTable() {

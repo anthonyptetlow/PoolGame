@@ -18,15 +18,14 @@ public class TurnPanel extends JPanel implements Observer {
 		this.game = game;
 		this.game.addObserver(this);
 		turn = new JLabel();
-		turn.setText("Player " + game.getCurrentPlayer().getId() + "'s Turn");
 		add(turn);
+		update(null, null);
 
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		turn.setText("Player " + game.getCurrentPlayer().getId() + "'s Turn");
-
+		turn.setText("Player " + game.getCurrentPlayer().toString() + "'s Turn");
 		repaint();
 	}
 }

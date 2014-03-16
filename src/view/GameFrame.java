@@ -36,7 +36,7 @@ public class GameFrame extends JFrame {
 	}
 
 	private JPanel setUpStats() {
-		return new PlayerPanel(game);
+		return new TurnPanel(game);
 	}
 
 	private PoolTablePanel setupTable() {
@@ -46,6 +46,6 @@ public class GameFrame extends JFrame {
 	private JPanel createBallTray() {
 		// // TODO Create A panel to display a list of pocketed pool balls
 		// return tray;
-		return new TurnPanel(game);
+		return new JPanel();
 	}
 }

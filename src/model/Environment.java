@@ -51,12 +51,8 @@ public class Environment {
 			pottedThisTurn.add((IPoolBall) body.getUserData());
 			world.destroyBody(body);
 		}
-		// TODO IF ball is black, has either player removed all their balls?? if
-		// one has win! else players who shot looses
 
 		bodiesToRemove.clear();
-
-		// Check Moves left and switch player
 
 	}
 

@@ -5,7 +5,6 @@ import java.util.Observer;
 
 public interface IPlayer {
 
-	// TODO change this
 	String getTeam();
 
 	void setColor(Color color);
