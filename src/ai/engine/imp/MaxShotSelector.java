@@ -19,8 +19,13 @@ public class MaxShotSelector implements IShotSelector {
 				maxScore = shotsAndScores.get(shot);
 			}
 		}
-		if (selectedShot == null) {
+		if (selectedShot == null
+				&& shotsAndScores.keySet().iterator().hasNext()) {
 			selectedShot = shotsAndScores.keySet().iterator().next();
+		} else {
+			// TODO Fix random shot if non available
+			selectedShot = new Vec2((float) Math.random(),
+					(float) Math.random());
 		}
 		return selectedShot;
 	}
