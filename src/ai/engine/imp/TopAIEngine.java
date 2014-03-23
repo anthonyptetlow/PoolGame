@@ -3,15 +3,17 @@ package ai.engine.imp;
 import java.util.Map;
 import java.util.Set;
 
+import model.api.IPlayer;
 import model.api.IPoolGame;
 
 import org.jbox2d.common.Vec2;
 
+import ai.engine.IAIEngine;
 import ai.engine.IShotEvaluator;
 import ai.engine.IShotGenerator;
 import ai.engine.IShotSelector;
 
-public class TopAIEngine {
+public class TopAIEngine implements IAIEngine {
 
 	private IShotGenerator shotGen;
 	private IShotEvaluator shotEval;
@@ -26,7 +28,7 @@ public class TopAIEngine {
 		shotSel = new MaxShotSelector();
 	}
 
-	public Vec2 getNextShot(IPoolGame game) {
+	public Vec2 getNextShot(IPoolGame game, IPlayer player) {
 		Set<Vec2> possibleShots = shotGen.getShots(game);
 		Map<Vec2, Integer> shotsAndScores = shotEval
 				.evaluateShots(possibleShots);
