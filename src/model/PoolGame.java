@@ -25,10 +25,8 @@ public class PoolGame extends Observable implements IPoolGame {
 		players = new HashSet<IPlayer>();
 
 		currentPlayer = new Player(2);
-		currentPlayer.setColor(Color.YELLOW);
 		players.add(currentPlayer);
 		currentPlayer = new Player(1);
-		currentPlayer.setColor(Color.RED);
 		players.add(currentPlayer);
 		shotInHand = false;
 		// Start the physics loop
