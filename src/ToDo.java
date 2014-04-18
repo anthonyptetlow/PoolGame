@@ -1,8 +1,8 @@
 public class ToDo {
-	// TODO Rework the shape so colision appears whent he users ball is
-	// over half way into the pocket
-	// FIXME Fix the displaying of the bumpers
 
+	// TODO Have an opening dialog with a Play Button
+	// TODO Have a Dialog pop up at the end of the game with "Play Again?"
+	// TODO Have an indication off if player has a shot in hand/has fouled
 	/*
 	 * Had issues with getting the visual rep to matrch the physics Had 2
 	 * problems with: - Max speed being 300 units per second when 1 unit was a
