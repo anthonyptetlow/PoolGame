@@ -1,4 +1,4 @@
-package main;
+package run;
 
 import model.PoolGame;
 import model.api.IPoolGame;
