@@ -50,14 +50,8 @@ public class PoolTablePanel extends JPanel implements Observer {
 	@Override
 	public void paint(Graphics g) {
 		Image bufferImage = createImage(getWidth(), getHeight());
-		// double scale = Math.max((model.getWidth() / getWidth()),
-		// (model.getHeight() / getHeight()));
 		Graphics buffer = bufferImage.getGraphics();
 		Graphics2D g2d = (Graphics2D) buffer;
-		// Draw Pool Table
-		// TODO Clean up the drawing of objects
-		// Draw Balls
-
 		for (IPoolBall ball : model.getBalls()) {
 			g2d.setColor(ball.getTeamColour());
 			drawCircle(g2d, ball);
