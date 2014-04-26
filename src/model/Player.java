@@ -49,8 +49,7 @@ public class Player extends Observable implements IPlayer {
 				return "Red";
 			else if (color.equals(Color.YELLOW) || color.equals(Color.yellow))
 				return "Yellow";
-		return null;
-
+		return "No Team";
 	}
 
 	@Override
