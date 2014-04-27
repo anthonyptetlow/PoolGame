@@ -1,4 +1,4 @@
-package ai.engine.imp;
+package ai.imp;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import model.api.IPoolGame;
 
 import org.jbox2d.common.Vec2;
 
-import ai.engine.IShotGenerator;
+import ai.IShotGenerator;
 
 public class ReverseShotGenerator implements IShotGenerator {
 

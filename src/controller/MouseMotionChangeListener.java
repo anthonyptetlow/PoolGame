@@ -5,11 +5,11 @@ import java.awt.event.MouseMotionListener;
 
 import view.PoolTablePanel;
 
-public class MyMouseMotionListener implements MouseMotionListener {
+public class MouseMotionChangeListener implements MouseMotionListener {
 
 	private PoolTablePanel panel;
 
-	public MyMouseMotionListener(PoolTablePanel panel) {
+	public MouseMotionChangeListener(PoolTablePanel panel) {
 		this.panel = panel;
 	}
 

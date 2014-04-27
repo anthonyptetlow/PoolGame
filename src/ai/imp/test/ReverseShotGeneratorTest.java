@@ -1,4 +1,4 @@
-package ai.engine.imp.test;
+package ai.imp.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -16,7 +16,7 @@ import model.api.IPoolGame;
 import org.jbox2d.common.Vec2;
 import org.junit.Test;
 
-import ai.engine.imp.ReverseShotGenerator;
+import ai.imp.ReverseShotGenerator;
 
 public class ReverseShotGeneratorTest {
 

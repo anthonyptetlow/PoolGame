@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.api.IPoolGame;
-import controller.BallCreationListener;
-import controller.MyMouseMotionListener;
+import controller.WhiteBallInteractionListener;
+import controller.MouseMotionChangeListener;
 
 public class GameFrame extends JFrame {
 
@@ -28,8 +28,8 @@ public class GameFrame extends JFrame {
 		this.setContentPane(holder);
 		holder.add(setUpStats(), BorderLayout.NORTH);
 		PoolTablePanel table = setupTable();
-		table.addMouseListener(new BallCreationListener(game.getPoolTable()));
-		table.addMouseMotionListener(new MyMouseMotionListener(table));
+		table.addMouseListener(new WhiteBallInteractionListener(game.getPoolTable()));
+		table.addMouseMotionListener(new MouseMotionChangeListener(table));
 		holder.add(table, BorderLayout.CENTER);
 		holder.add(createBallTray(), BorderLayout.SOUTH);
 		setSize(table.getWidth(), table.getHeight());

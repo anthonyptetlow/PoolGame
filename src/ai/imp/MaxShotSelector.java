@@ -1,10 +1,10 @@
-package ai.engine.imp;
+package ai.imp;
 
 import java.util.Map;
 
 import org.jbox2d.common.Vec2;
 
-import ai.engine.IShotSelector;
+import ai.IShotSelector;
 
 public class MaxShotSelector implements IShotSelector {
 

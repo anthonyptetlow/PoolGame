@@ -1,4 +1,4 @@
-package ai.engine.imp.test;
+package ai.imp.test;
 
 import java.awt.Color;
 

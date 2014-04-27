@@ -8,15 +8,14 @@ import model.api.IPoolTable;
 
 import org.jbox2d.common.Vec2;
 
-public class BallCreationListener implements MouseListener {
+public class WhiteBallInteractionListener implements MouseListener {
 
 	private IPoolTable model;
 	private boolean takeShot = true;
-	// TODO Move to shared properties class
 	private float scaleVis = 500f;
 	private float offset = 0.10f;
 
-	public BallCreationListener(IPoolTable model) {
+	public WhiteBallInteractionListener(IPoolTable model) {
 		this.model = model;
 	}
 
@@ -34,7 +33,6 @@ public class BallCreationListener implements MouseListener {
 			if (xCorrected < 0.675f) {
 				model.addWhiteBall(xCorrected, yCorrected);
 			}
-
 			takeShot = false;
 		} else {
 			takeShot = true;

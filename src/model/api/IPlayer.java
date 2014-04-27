@@ -1,7 +1,6 @@
 package model.api;
 
 import java.awt.Color;
-import java.util.Observer;
 
 public interface IPlayer {
 
@@ -12,7 +11,5 @@ public interface IPlayer {
 	Color getColor();
 
 	int getId();
-
-	void addObserver(Observer o);
 
 }

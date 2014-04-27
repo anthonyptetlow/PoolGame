@@ -1,4 +1,4 @@
-package ai.engine;
+package ai;
 
 import model.api.IPlayer;
 import model.api.IPoolGame;

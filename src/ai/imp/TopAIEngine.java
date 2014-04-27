@@ -1,4 +1,4 @@
-package ai.engine.imp;
+package ai.imp;
 
 import java.util.Map;
 import java.util.Set;
@@ -8,10 +8,10 @@ import model.api.IPoolGame;
 
 import org.jbox2d.common.Vec2;
 
-import ai.engine.IAIEngine;
-import ai.engine.IShotEvaluator;
-import ai.engine.IShotGenerator;
-import ai.engine.IShotSelector;
+import ai.IAIEngine;
+import ai.IShotEvaluator;
+import ai.IShotGenerator;
+import ai.IShotSelector;
 
 public class TopAIEngine implements IAIEngine {
 
@@ -19,12 +19,9 @@ public class TopAIEngine implements IAIEngine {
 	private IShotEvaluator shotEval;
 	private IShotSelector shotSel;
 
-	// private UserModel userModel;
-	// private StateSearcher stateSearch;
-
 	public TopAIEngine() {
-		shotEval = new BasicShotEvaluator();
 		shotGen = new ReverseShotGenerator();
+		shotEval = new BasicShotEvaluator();
 		shotSel = new MaxShotSelector();
 	}
 
